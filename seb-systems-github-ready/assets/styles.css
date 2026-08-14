@@ -428,6 +428,30 @@ p { color: var(--ink-soft); }
   line-height: 1.2 !important;
   font-weight: 620;
 }
+.approach-principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0 30px;
+  padding: 0;
+  list-style: none;
+}
+.approach-principles li {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: white;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+.approach-principles strong {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.2;
+}
 .small-business-takeaway { margin-top: 30px; padding-top: 28px; border-top: 1px solid var(--line); }
 .small-business-takeaway .kicker { margin-bottom: 14px; }
 .small-business-takeaway p { margin-bottom: 0; }
@@ -534,6 +558,7 @@ p { color: var(--ink-soft); }
   .page-hero-shell { padding: 44px 25px; }
   .case-hero .page-hero-shell { padding: 30px 25px; }
   .about-grid { gap: 38px; }
+  .approach-principles { grid-template-columns: 1fr; }
   .footer-inner { flex-direction: column; }
 }
 
