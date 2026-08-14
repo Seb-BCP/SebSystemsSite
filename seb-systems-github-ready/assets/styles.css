@@ -51,6 +51,7 @@ button { cursor: pointer; }
   justify-content: space-between;
   gap: 28px;
 }
+.brand-area { display: flex; align-items: center; gap: 18px; min-width: 0; }
 .brand {
   display: flex;
   align-items: center;
@@ -66,18 +67,22 @@ button { cursor: pointer; }
 .brand-copy { display: grid; line-height: 1.12; }
 .brand-copy strong { font-size: 1rem; letter-spacing: -0.03em; }
 .brand-copy span { margin-top: 5px; color: var(--muted); font-size: 0.72rem; }
+.header-phone {
+  align-self: flex-start;
+  flex: 0 0 auto;
+  margin-top: 2px;
+  padding-left: 18px;
+  border-left: 1px solid var(--line);
+  color: var(--blue-dark);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.header-phone:hover { color: var(--blue); }
 .site-nav { display: flex; align-items: center; gap: 24px; }
 .site-nav a { text-decoration: none; color: var(--ink-soft); font-size: 0.84rem; font-weight: 700; }
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--ink); }
-.nav-cta {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  padding: 0 17px;
-  border-radius: 999px;
-  background: var(--ink);
-  color: white !important;
-}
 .menu-toggle {
   display: none;
   width: 42px;
@@ -217,7 +222,18 @@ p { color: var(--ink-soft); }
 }
 .cta-panel h2 { margin-bottom: 18px; color: white; }
 .cta-panel p { color: rgba(255,255,255,.78); margin-bottom: 0; }
-.cta-panel .btn-secondary { align-self: center; justify-self: end; }
+.cta-phone {
+  align-self: center;
+  justify-self: end;
+  color: white;
+  font-size: 1.04rem;
+  font-weight: 800;
+  text-decoration: none;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  white-space: nowrap;
+}
+.cta-phone:hover { text-decoration: underline; }
 
 .page-hero { padding: 58px 0 42px; }
 .page-hero-shell {
@@ -264,23 +280,53 @@ p { color: var(--ink-soft); }
   box-shadow: var(--shadow-small);
 }
 .diagram-title { margin: 0 0 16px; color: var(--muted); font-size: 0.78rem; font-weight: 800; }
-.network-diagram {
-  position: relative;
-  min-height: 560px;
-  overflow: hidden;
-  background: radial-gradient(circle at 50% 46%, rgba(37,99,235,.08), transparent 280px), #fcfdff;
+.diagram-flow {
+  padding: clamp(18px, 3vw, 34px);
   border: 1px solid var(--silver);
   border-radius: 18px;
+  background: radial-gradient(circle at 50% 46%, rgba(37,99,235,.08), transparent 280px), #fcfdff;
 }
-.network-diagram.tall { min-height: 650px; }
-.diagram-connections { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
-.diagram-connections path { fill: none; stroke: var(--blue); stroke-width: 2.4; stroke-linecap: round; }
-.diagram-connections .soft { stroke: #7fa8e9; }
-.diagram-node {
-  position: absolute;
-  z-index: 2;
-  width: 220px;
-  min-height: 94px;
+.diagram-flow--placement {
+  display: grid;
+  grid-template-columns: minmax(300px, 1.5fr) 38px minmax(220px, 1fr) 38px minmax(240px, 1.15fr);
+  gap: 12px;
+  align-items: center;
+}
+.diagram-flow--timesheet { display: grid; gap: 18px; justify-items: center; }
+.diagram-flow__group {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--silver);
+  border-radius: 16px;
+  background: rgba(255,255,255,.72);
+}
+.diagram-flow__inputs { display: grid; gap: 16px; }
+.diagram-flow__label {
+  margin: 0 0 13px;
+  color: var(--blue-dark);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.diagram-flow__track {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+.diagram-flow__track--three { grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr) 34px minmax(0, 1fr); }
+.diagram-flow__merge {
+  width: min(100%, 760px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+.diagram-flow__outputs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.diagram-flow__node {
+  min-width: 0;
+  min-height: 104px;
   display: grid;
   grid-template-columns: 44px 1fr;
   gap: 12px;
@@ -291,12 +337,12 @@ p { color: var(--ink-soft); }
   border-radius: 16px;
   box-shadow: 0 14px 32px rgba(15, 23, 42, 0.10);
 }
-.diagram-node.hub {
-  width: 268px;
+.diagram-flow__node--hub {
   min-height: 112px;
   background: var(--blue-soft);
   border: 2px solid var(--blue);
 }
+.diagram-flow--timesheet > .diagram-flow__node--hub { width: min(100%, 480px); }
 .node-icon {
   width: 44px;
   height: 44px;
@@ -306,39 +352,38 @@ p { color: var(--ink-soft); }
   background: var(--blue-soft);
   color: var(--blue-dark);
 }
-.hub .node-icon { background: white; }
+.diagram-flow__node--hub .node-icon { background: white; }
 .node-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 .node-copy { min-width: 0; }
 .node-copy strong { display: block; color: var(--ink); font-size: 0.96rem; line-height: 1.2; }
 .node-copy span { display: block; margin-top: 5px; color: var(--muted); font-size: 0.73rem; line-height: 1.35; }
-.diagram-note { margin: 14px 4px 0; color: var(--muted); font-size: 0.84rem; text-align: center; }
-.diagram-definition {
-  margin: 16px 0 0;
-  padding: 19px 21px;
-  border-left: 6px solid var(--blue);
-  background: var(--blue-pale);
-  color: var(--ink);
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  line-height: 1.46;
-  letter-spacing: -0.025em;
+.diagram-flow__arrow { position: relative; display: block; flex: 0 0 auto; background: var(--blue); }
+.diagram-flow__arrow--right { width: 32px; height: 2px; justify-self: center; }
+.diagram-flow__arrow--right::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid var(--blue);
+  border-right: 2px solid var(--blue);
+  transform: translateY(-50%) rotate(45deg);
 }
-
-/* Registration and order diagram positions */
-.reg-diagram .registration { left: 4%; top: 8%; }
-.reg-diagram .profile { left: 37%; top: 8%; }
-.reg-diagram .order { right: 4%; top: 8%; }
-.reg-diagram .workforce { left: 50%; top: 43%; transform: translate(-50%, -50%); }
-.reg-diagram .placement { left: 50%; bottom: 6%; transform: translateX(-50%); width: 330px; }
-
-/* Timesheet diagram positions */
-.ts-diagram .timesheet { left: 3%; top: 8%; }
-.ts-diagram .emailer { left: 30%; top: 22%; }
-.ts-diagram .approval { left: 58%; top: 22%; }
-.ts-diagram .placement-input { left: 5%; bottom: 9%; }
-.ts-diagram .blue-folder { left: 50%; top: 58%; transform: translate(-50%, -50%); width: 300px; }
-.ts-diagram .payroll { right: 3%; top: 5%; }
-.ts-diagram .invoices { right: 3%; top: 43%; }
-.ts-diagram .reports { right: 3%; bottom: 5%; }
+.diagram-flow__arrow--down { width: 2px; height: 30px; }
+.diagram-flow__arrow--down::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--blue);
+  border-bottom: 2px solid var(--blue);
+  transform: translateX(-50%) rotate(45deg);
+}
+.diagram-flow__operator { color: var(--blue-dark); font-size: 1.8rem; font-weight: 650; }
+.diagram-note { margin: 14px 4px 0; color: var(--muted); font-size: 0.84rem; text-align: center; }
 
 .about-grid {
   display: grid;
@@ -356,29 +401,28 @@ p { color: var(--ink-soft); }
   border: 1px solid var(--line);
 }
 .about-photo img { width: 100%; height: 100%; min-height: 610px; object-fit: cover; object-position: center top; }
-.about-copy h1 { margin-bottom: 24px; }
+.about-copy h1 { max-width: 680px; margin-bottom: 24px; font-size: clamp(2.35rem, 4.5vw, 4.6rem); }
 .about-copy .lead { margin-bottom: 30px; }
 .about-copy article { padding-top: 30px; border-top: 1px solid var(--line); }
 .about-copy article p { font-size: 1.04rem; line-height: 1.82; }
-.approach-question {
-  margin: 32px 0;
-  padding: 22px 24px;
-  border-left: 6px solid var(--blue);
+.approach-question, .foundational-statement, .closing-line {
+  margin: 34px 0;
+  padding: clamp(30px, 4vw, 52px) clamp(28px, 4vw, 50px);
+  border-left: 12px solid var(--blue);
   background: var(--blue-pale);
-  color: var(--ink);
+  color: var(--ink) !important;
+  letter-spacing: -0.045em;
+}
+.approach-question {
   font-size: clamp(1.3rem, 2.6vw, 2rem);
   line-height: 1.28;
-  letter-spacing: -0.035em;
   font-weight: 590;
 }
+.foundational-statement { font-size: clamp(2rem, 4.1vw, 4.3rem); line-height: 1.12; font-weight: 650; }
 .closing-line {
-  margin-top: 34px;
-  padding-top: 30px;
-  border-top: 1px solid var(--line);
-  color: var(--ink) !important;
-  font-size: clamp(1.5rem, 3vw, 2.4rem) !important;
+  font-size: clamp(1.7rem, 3.25vw, 3.4rem) !important;
   line-height: 1.2 !important;
-  letter-spacing: -0.045em;
+  font-weight: 620;
 }
 
 .contact-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; align-items: start; }
@@ -420,10 +464,34 @@ p { color: var(--ink-soft); }
   .process-grid { grid-template-columns: 1fr 1fr; }
   .process-step:nth-child(2) { border-right: 0; }
   .process-step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .cta-phone { justify-self: start; }
+}
+
+@media (max-width: 1080px) {
+  .diagram-flow--placement,
+  .diagram-flow__track,
+  .diagram-flow__track--three,
+  .diagram-flow__merge,
+  .diagram-flow__outputs { grid-template-columns: 1fr; }
+  .diagram-flow__arrow--right { width: 2px; height: 28px; }
+  .diagram-flow__arrow--right::after {
+    top: auto;
+    right: auto;
+    bottom: -1px;
+    left: 50%;
+    border-top: 0;
+    border-right: 2px solid var(--blue);
+    border-bottom: 2px solid var(--blue);
+    transform: translateX(-50%) rotate(45deg);
+  }
+  .diagram-flow__operator { justify-self: center; }
 }
 
 @media (max-width: 800px) {
   .container { width: min(calc(100% - 26px), var(--max)); }
+  .header-inner { gap: 14px; }
+  .brand-area { gap: 12px; }
+  .header-phone { padding-left: 12px; font-size: 0.76rem; }
   .menu-toggle { display: block; }
   .site-nav {
     position: absolute;
@@ -442,7 +510,6 @@ p { color: var(--ink-soft); }
   }
   .site-nav.is-open { display: flex; }
   .site-nav a { padding: 13px 12px; }
-  .nav-cta { justify-content: center; }
   section { padding: 74px 0; }
   .hero { padding-top: 20px; }
   .hero-grid { min-height: auto; }
@@ -457,27 +524,13 @@ p { color: var(--ink-soft); }
   .process-step:last-child { border-bottom: 0; }
   .process-step span { margin-bottom: 34px; }
   .cta-panel { padding: 38px 25px; }
-  .cta-panel .btn-secondary { justify-self: start; }
   .page-hero-shell { padding: 44px 25px; }
-  .network-diagram, .network-diagram.tall {
-    min-height: 0;
-    display: grid;
-    gap: 12px;
-    padding: 14px;
-  }
-  .diagram-connections { display: none; }
-  .diagram-node, .diagram-node.hub,
-  .reg-diagram .registration, .reg-diagram .profile, .reg-diagram .order, .reg-diagram .workforce, .reg-diagram .placement,
-  .ts-diagram .timesheet, .ts-diagram .emailer, .ts-diagram .approval, .ts-diagram .placement-input, .ts-diagram .blue-folder, .ts-diagram .payroll, .ts-diagram .invoices, .ts-diagram .reports {
-    position: relative;
-    inset: auto;
-    left: auto;
-    right: auto;
-    top: auto;
-    bottom: auto;
-    transform: none;
-    width: 100%;
-  }
   .about-grid { gap: 38px; }
   .footer-inner { flex-direction: column; }
+}
+
+@media (max-width: 510px) {
+  .brand-copy span { display: none; }
+  .brand-mark { height: 30px; }
+  .header-phone { font-size: 0.72rem; }
 }

@@ -7,21 +7,23 @@
   <meta name="theme-color" content="#111827">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/styles.css">
-  <title>Case example | Sebastian Ortiz</title>
+  <title>Case Example | Sebastian Ortiz</title>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html" aria-label="Sebastian Ortiz home">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-copy"><strong>Sebastian Ortiz</strong><span>Small business systems builder · Perth</span></span>
-    </a>
+    <div class="brand-area">
+      <a class="brand" href="index.html" aria-label="Sebastian Ortiz home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy"><strong>Sebastian Ortiz</strong><span>Small business systems builder · Perth</span></span>
+      </a>
+      <a class="header-phone" href="tel:+61458899024" aria-label="Call Sebastian Ortiz on 0458 899 024">0458 899 024</a>
+    </div>
     <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle>☰</button>
     <nav class="site-nav" aria-label="Main navigation" data-site-nav>
-      <a href="index.html">Home</a><a href="case-example.html" aria-current="page">Case example</a><a href="about.html">About Seb & my approach</a>
-      <a class="nav-cta" href="contact.html">Start a conversation</a>
+      <a href="index.html">Home</a><a href="case-example.html" aria-current="page">Case Example</a><a href="about.html">Seb's Approach</a>
     </nav>
   </div>
 </header>
@@ -29,9 +31,8 @@
 <main id="main">
   <section class="page-hero">
     <div class="container page-hero-shell">
-      <span class="kicker">Case example</span>
-      <h1>Evolving Blue Collar People’s systems without replacing everything at once.</h1>
-      <p class="lead">This example shows how separate registrations, client orders and timesheets were connected around two central systems: Work Force and the Blue Folder.</p>
+      <span class="kicker">Case Example</span>
+      <h1>Building a Labour Hire Management System: From Timesheets to Workforce Management and Payroll Preparation for 80+ Employees.</h1>
     </div>
   </section>
 
@@ -46,40 +47,64 @@
   <section>
     <div class="container">
       <div class="case-copy"><span class="kicker">Part one</span><h2>Registrations and client orders create the placement structure.</h2><p>Worker registrations and client orders enter as separate branches. Work Force brings the worker profile and order together, then creates the correct timesheet placement in the Blue Folder.</p></div>
-      <div class="diagram-card">
-        <p class="diagram-title">Registrations, orders and placements</p>
-        <div class="network-diagram reg-diagram">
-          <svg class="diagram-connections" viewBox="0 0 900 560" aria-hidden="true"><defs><marker id="arrow-reg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2563eb"/></marker></defs><path marker-end="url(#arrow-reg)" d="M240 88 C275 88 295 88 332 88"/><path marker-end="url(#arrow-reg)" d="M442 132 C442 170 470 193 476 220"/><path marker-end="url(#arrow-reg)" d="M660 90 C620 105 575 170 535 220"/><path marker-end="url(#arrow-reg)" d="M470 334 C470 365 470 390 470 425"/></svg>
-          <article class="diagram-node registration"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4"/><path d="M10 11h6"/><path d="M10 15h6"/></svg></span><span class="node-copy"><strong>Online registrations</strong><span>Workers submit registration details.</span></span></article>
-          <article class="diagram-node profile"><span class="node-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/></svg></span><span class="node-copy"><strong>Worker profiles</strong><span>Profiles are created from the registration data.</span></span></article>
-          <article class="diagram-node order"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M8 6h12v13a2 2 0 0 1-2 2H8z"/><path d="M8 6V5a2 2 0 0 0-2-2H4v16a2 2 0 0 0 2 2h12"/><path d="M11 11h6"/><path d="M11 15h5"/></svg></span><span class="node-copy"><strong>Client orders</strong><span>Orders enter Work Force as a separate branch.</span></span></article>
-          <article class="diagram-node hub workforce"><span class="node-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="6" rx="1.5"/><rect x="14" y="3" width="7" height="6" rx="1.5"/><rect x="8.5" y="15" width="7" height="6" rx="1.5"/><path d="M10 6h4"/><path d="M12 9v6"/></svg></span><span class="node-copy"><strong>Work Force</strong><span>Worker profiles and client orders are matched here.</span></span></article>
-          <article class="diagram-node placement"><span class="node-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3 10h18"/></svg></span><span class="node-copy"><strong>Blue Folder timesheet placements</strong><span>The correct worker, client and job record are created.</span></span></article>
+      <figure class="diagram-card">
+        <figcaption class="diagram-title">How a placement is created</figcaption>
+        <div class="diagram-flow diagram-flow--placement" role="img" aria-label="Online registrations, worker profiles and client orders are joined in Work Force to create a Blue Folder placement.">
+          <section class="diagram-flow__group diagram-flow__inputs">
+            <p class="diagram-flow__label">Inputs to Work Force</p>
+            <div class="diagram-flow__track">
+              <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4"/><path d="M10 11h6"/><path d="M10 15h6"/></svg></span><span class="node-copy"><strong>Online registrations</strong><span>Workers submit registration details.</span></span></article>
+              <span class="diagram-flow__arrow diagram-flow__arrow--right" aria-hidden="true"></span>
+              <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/></svg></span><span class="node-copy"><strong>Worker profiles</strong><span>Profiles are created from the registration data.</span></span></article>
+            </div>
+            <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M8 6h12v13a2 2 0 0 1-2 2H8z"/><path d="M8 6V5a2 2 0 0 0-2-2H4v16a2 2 0 0 0 2 2h12"/><path d="M11 11h6"/><path d="M11 15h5"/></svg></span><span class="node-copy"><strong>Client orders</strong><span>Orders enter as a separate input.</span></span></article>
+          </section>
+          <span class="diagram-flow__arrow diagram-flow__arrow--right" aria-hidden="true"></span>
+          <article class="diagram-flow__node diagram-flow__node--hub"><span class="node-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="6" rx="1.5"/><rect x="14" y="3" width="7" height="6" rx="1.5"/><rect x="8.5" y="15" width="7" height="6" rx="1.5"/><path d="M10 6h4"/><path d="M12 9v6"/></svg></span><span class="node-copy"><strong>Work Force</strong><span>Worker profiles and client orders are matched here.</span></span></article>
+          <span class="diagram-flow__arrow diagram-flow__arrow--right" aria-hidden="true"></span>
+          <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3 10h18"/></svg></span><span class="node-copy"><strong>Blue Folder placement</strong><span>The correct worker, client and job record are created.</span></span></article>
         </div>
-        <p class="diagram-note">Separate inputs converge in Work Force, which creates the placement structure used by the Blue Folder.</p>
-      </div>
+        <p class="diagram-note">Work Force joins worker and client information to create the Blue Folder placement.</p>
+      </figure>
 
       <div class="case-copy"><span class="kicker">Part two</span><h2>Approved timesheets enter the correct placement and become useful outputs.</h2><p>Workers submit timesheets through an online form. A PDF report and batch emailer sends them to the relevant client for approval. The approved timesheet then enters the correct Blue Folder placement.</p></div>
-      <div class="diagram-card">
-        <p class="diagram-title">Timesheets, approvals and outputs</p>
-        <div class="network-diagram tall ts-diagram">
-          <svg class="diagram-connections" viewBox="0 0 900 650" aria-hidden="true"><defs><marker id="arrow-ts" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2563eb"/></marker></defs><path marker-end="url(#arrow-ts)" d="M220 105 C260 115 285 145 320 178"/><path marker-end="url(#arrow-ts)" d="M510 215 C535 215 555 215 580 215"/><path marker-end="url(#arrow-ts)" d="M690 260 C650 290 615 335 560 365"/><path marker-end="url(#arrow-ts)" class="soft" d="M225 525 C300 515 345 470 382 420"/><path marker-end="url(#arrow-ts)" d="M585 355 C650 315 700 210 720 120"/><path marker-end="url(#arrow-ts)" d="M595 385 C650 385 690 385 720 385"/><path marker-end="url(#arrow-ts)" d="M575 425 C645 470 685 545 720 575"/></svg>
-          <article class="diagram-node timesheet"><span class="node-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h4"/></svg></span><span class="node-copy"><strong>Online timesheet form</strong><span>Workers submit their weekly hours.</span></span></article>
-          <article class="diagram-node emailer"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 8 8 6 8-6"/></svg></span><span class="node-copy"><strong>PDF report + batch emailer</strong><span>Reports are generated and sent for approval.</span></span></article>
-          <article class="diagram-node approval"><span class="node-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.3 2.3 4.7-4.8"/></svg></span><span class="node-copy"><strong>Client approval</strong><span>The relevant client signs off the timesheet.</span></span></article>
-          <article class="diagram-node placement-input"><span class="node-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3 10h18"/></svg></span><span class="node-copy"><strong>Placement from Work Force</strong><span>The worker, client and job record already exists.</span></span></article>
-          <article class="diagram-node hub blue-folder"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1"/></svg></span><span class="node-copy"><strong>The Blue Folder</strong><span>Approved hours are matched to the correct placement and processed here.</span></span></article>
-          <article class="diagram-node payroll"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="m3 9 9-5 9 5"/><path d="M4 10h16"/><path d="M6 10v7"/><path d="M10 10v7"/><path d="M14 10v7"/><path d="M18 10v7"/><path d="M3 20h18"/></svg></span><span class="node-copy"><strong>Payroll file</strong><span>Prepared for payroll processing.</span></span></article>
-          <article class="diagram-node invoices"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M7 3h10v18l-2-1-2 1-2-1-2 1-2-1z"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h4"/></svg></span><span class="node-copy"><strong>Invoices</strong><span>Client charging outputs are prepared.</span></span></article>
-          <article class="diagram-node reports"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 16v-4"/><path d="M12 16V8"/><path d="M16 16v-6"/></svg></span><span class="node-copy"><strong>Sales reports</strong><span>Management reporting is generated.</span></span></article>
+      <figure class="diagram-card">
+        <figcaption class="diagram-title">How approved timesheets become business outputs</figcaption>
+        <div class="diagram-flow diagram-flow--timesheet" role="img" aria-label="An online timesheet is sent for client approval. The approved timesheet and existing Work Force placement meet in the Blue Folder, which prepares payroll, invoicing and sales reports.">
+          <section class="diagram-flow__group">
+            <p class="diagram-flow__label">Timesheet approval</p>
+            <div class="diagram-flow__track diagram-flow__track--three">
+              <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h4"/></svg></span><span class="node-copy"><strong>Online timesheet form</strong><span>Workers submit their weekly hours.</span></span></article>
+              <span class="diagram-flow__arrow diagram-flow__arrow--right" aria-hidden="true"></span>
+              <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 8 8 6 8-6"/></svg></span><span class="node-copy"><strong>Approval email and PDF</strong><span>A report is generated and sent for approval.</span></span></article>
+              <span class="diagram-flow__arrow diagram-flow__arrow--right" aria-hidden="true"></span>
+              <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.3 2.3 4.7-4.8"/></svg></span><span class="node-copy"><strong>Client-approved timesheet</strong><span>The relevant client signs off the hours.</span></span></article>
+            </div>
+          </section>
+          <span class="diagram-flow__arrow diagram-flow__arrow--down" aria-hidden="true"></span>
+          <div class="diagram-flow__merge">
+            <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.3 2.3 4.7-4.8"/></svg></span><span class="node-copy"><strong>Approved timesheet</strong><span>Verified weekly hours.</span></span></article>
+            <span class="diagram-flow__operator" aria-hidden="true">+</span>
+            <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3 10h18"/></svg></span><span class="node-copy"><strong>Existing placement from Work Force</strong><span>The worker, client and job record already exists.</span></span></article>
+          </div>
+          <span class="diagram-flow__arrow diagram-flow__arrow--down" aria-hidden="true"></span>
+          <article class="diagram-flow__node diagram-flow__node--hub"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1"/></svg></span><span class="node-copy"><strong>The Blue Folder</strong><span>Approved hours are matched to the correct placement and processed here.</span></span></article>
+          <span class="diagram-flow__arrow diagram-flow__arrow--down" aria-hidden="true"></span>
+          <section class="diagram-flow__group">
+            <p class="diagram-flow__label">Outputs</p>
+            <div class="diagram-flow__outputs">
+              <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="m3 9 9-5 9 5"/><path d="M4 10h16"/><path d="M6 10v7"/><path d="M10 10v7"/><path d="M14 10v7"/><path d="M18 10v7"/><path d="M3 20h18"/></svg></span><span class="node-copy"><strong>Payroll file</strong><span>Prepared for payroll processing.</span></span></article>
+              <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M7 3h10v18l-2-1-2 1-2-1-2 1-2-1z"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h4"/></svg></span><span class="node-copy"><strong>Invoices</strong><span>Client charging outputs are prepared.</span></span></article>
+              <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 16v-4"/><path d="M12 16V8"/><path d="M16 16v-6"/></svg></span><span class="node-copy"><strong>Sales reports</strong><span>Management reporting is generated.</span></span></article>
+            </div>
+          </section>
         </div>
-        <p class="diagram-note">The approved timesheet and the placement structure converge in the Blue Folder, which then branches into payroll, invoicing and reporting.</p>
-        <p class="diagram-definition">The Blue Folder is the central hub that matches approved timesheets to job placements and prepares payroll, invoicing and reporting outputs.</p>
-      </div>
+        <p class="diagram-note">Approved hours and the existing placement meet in the Blue Folder, producing payroll, invoicing and reporting.</p>
+      </figure>
     </div>
   </section>
 
-  <section><div class="container cta-panel"><div><h2>Start with one process that is wasting time.</h2><p>The purpose is not to rebuild the entire business. It is to make one focused improvement that proves itself in daily operation.</p></div><a class="btn btn-secondary" href="contact.html">Start a conversation →</a></div></section>
+  <section><div class="container cta-panel"><div><h2>Build the next useful improvement.</h2><p>Each improvement should make everyday work easier now, while leaving the business better prepared for what comes next.</p></div><a class="cta-phone" href="tel:+61458899024">Call or text: 0458 899 024</a></div></section>
 </main>
 
 <footer class="site-footer">
