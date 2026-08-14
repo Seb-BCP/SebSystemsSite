@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact Sebastian Ortiz about a practical systems improvement for a small Perth business.">
+  <meta name="theme-color" content="#111827">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <title>Contact | Sebastian Ortiz</title>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Sebastian Ortiz home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-copy"><strong>Sebastian Ortiz</strong><span>Small business systems builder · Perth</span></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle>☰</button>
+    <nav class="site-nav" aria-label="Main navigation" data-site-nav>
+      <a href="index.html">Home</a><a href="case-example.html">Case example</a><a href="about.html">About Seb & my approach</a>
+      <a class="nav-cta" href="contact.html">Start a conversation</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="container contact-grid">
+      <div class="contact-intro">
+        <span class="kicker">Start a conversation</span>
+        <h1>Show me the process that should be easier.</h1>
+        <p class="lead">The first step is a short phone call. Where the problem appears suitable, I can visit your Perth business for a free on-site walkthrough.</p>
+        <p>There is no open booking calendar. I first screen the inquiry to make sure the problem is within my capability and worth your time.</p>
+      </div>
+      <form class="form-card" method="post" data-contact-form>
+        <div class="form-grid">
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="business">Business name</label><input id="business" name="business" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+          <div class="field"><label for="suburb">Business suburb</label><input id="suburb" name="suburb" required></div>
+          <div class="field"><label for="team_size">Number of people</label><select id="team_size" name="team_size" required><option value="">Select one</option><option>Just me</option><option>2–5</option><option>6–10</option><option>More than 10</option></select></div>
+          <div class="field full"><label for="problem">What process is taking too much time or causing problems?</label><textarea id="problem" name="problem" required></textarea></div>
+          <div class="field full"><label for="current_process">How is it currently handled?</label><textarea id="current_process" name="current_process" placeholder="For example: paper forms, spreadsheets, email, MYOB, Xero or another program."></textarea></div>
+          <div class="field full"><button class="btn btn-primary" type="submit">Send inquiry →</button></div>
+        </div>
+        <p class="form-note">Do not submit payroll files, employee records or customer databases through this form.</p>
+        <p class="form-status" data-form-status aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© <span data-year></span> Sebastian Ortiz · Perth, Western Australia</span>
+    <a href="#" data-contact-email>Email to be added</a>
+  </div>
+</footer>
+<script src="assets/site-config.js"></script>
+<script src="assets/site.js"></script>
+
+</body></html>
