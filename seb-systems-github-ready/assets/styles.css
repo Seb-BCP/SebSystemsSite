@@ -245,6 +245,10 @@ p { color: var(--ink-soft); }
 }
 .page-hero h1 { max-width: 930px; margin-bottom: 24px; }
 .page-hero .lead { max-width: 820px; margin-bottom: 0; }
+.case-hero { padding: 32px 0 16px; }
+.case-hero .page-hero-shell { padding: 38px 48px; }
+.case-hero h1 { max-width: 1080px; margin-bottom: 0; font-size: clamp(2.2rem, 3vw, 3.6rem); line-height: 1.1; }
+.case-hero + .video-section { padding-top: 20px; }
 
 .video-section { padding-top: 36px; }
 .video-shell {
@@ -406,24 +410,27 @@ p { color: var(--ink-soft); }
 .about-copy article { padding-top: 30px; border-top: 1px solid var(--line); }
 .about-copy article p { font-size: 1.04rem; line-height: 1.82; }
 .approach-question, .foundational-statement, .closing-line {
-  margin: 34px 0;
-  padding: clamp(30px, 4vw, 52px) clamp(28px, 4vw, 50px);
-  border-left: 12px solid var(--blue);
+  margin: 26px 0;
+  padding: clamp(20px, 2vw, 28px) clamp(20px, 2vw, 28px);
+  border-left: 6px solid var(--blue);
   background: var(--blue-pale);
   color: var(--ink) !important;
   letter-spacing: -0.045em;
 }
 .approach-question {
-  font-size: clamp(1.3rem, 2.6vw, 2rem);
+  font-size: 1rem;
   line-height: 1.28;
   font-weight: 590;
 }
-.foundational-statement { font-size: clamp(2rem, 4.1vw, 4.3rem); line-height: 1.12; font-weight: 650; }
+.foundational-statement { font-size: clamp(1.35rem, 2.05vw, 2.15rem); line-height: 1.12; font-weight: 650; }
 .closing-line {
-  font-size: clamp(1.7rem, 3.25vw, 3.4rem) !important;
+  font-size: clamp(1.2rem, 1.625vw, 1.7rem) !important;
   line-height: 1.2 !important;
   font-weight: 620;
 }
+.small-business-takeaway { margin-top: 30px; padding-top: 28px; border-top: 1px solid var(--line); }
+.small-business-takeaway .kicker { margin-bottom: 14px; }
+.small-business-takeaway p { margin-bottom: 0; }
 
 .contact-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; align-items: start; }
 .contact-intro { position: sticky; top: 112px; }
@@ -525,6 +532,7 @@ p { color: var(--ink-soft); }
   .process-step span { margin-bottom: 34px; }
   .cta-panel { padding: 38px 25px; }
   .page-hero-shell { padding: 44px 25px; }
+  .case-hero .page-hero-shell { padding: 30px 25px; }
   .about-grid { gap: 38px; }
   .footer-inner { flex-direction: column; }
 }
