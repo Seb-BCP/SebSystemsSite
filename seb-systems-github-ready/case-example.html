@@ -6,7 +6,7 @@
   <meta name="description" content="A practical case example showing how Blue Collar People systems were connected in stages.">
   <meta name="theme-color" content="#111827">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/styles.css?v=20260815g">
   <title>Case Example | Sebastian Ortiz</title>
 </head>
 <body>
@@ -36,38 +36,26 @@
     </div>
   </section>
 
-  <section class="video-section">
-    <div class="container">
-      <div class="video-shell">
-        <video controls playsinline preload="metadata" poster="assets/batch-pdf-emailer-anonymised.png" aria-label="Privacy-safe Blue Folder workflow walkthrough">
-          <source src="assets/blue-folder-workflow-sanitised.mp4" type="video/mp4">
-          Your browser does not support embedded video.
-        </video>
-      </div>
-      <p class="case-video-note"><strong>A privacy-safe walkthrough.</strong> This accelerated view shows the workflow in motion while client, worker and financial details have been obscured.</p>
-    </div>
-  </section>
-
   <section>
     <div class="container">
       <div class="case-copy"><span class="kicker">Step 1</span><h2>Worker and client details create the right placement.</h2><p>Worker registrations and client orders are matched to create the correct Blue Folder placement. Workers can then submit their hours through a native web link—no app or password required.</p></div>
 
       <div class="case-copy"><span class="kicker">Step 2</span><h2>Submitted hours become approved payroll and invoice data.</h2><p>We collect and review the submitted hours, then the system creates a PDF report of each worker’s hours for the relevant client. Each report is sent to the correct client for approval. Once approved, the timesheet data transfers to the Blue Folder, which processes it into a payroll file and sales data for generating invoices.</p></div>
-      <figure class="diagram-card">
+      <figure class="diagram-card" id="case-flow">
         <figcaption class="diagram-title">How approved timesheets become business outputs</figcaption>
-        <div class="diagram-flow diagram-flow--timesheet" role="img" aria-label="An online timesheet form creates client PDF reports through a PDF Generator and Batch Emailer. Timesheet data transfers by webhooks to the Blue Folder, which processes it into payroll and sales data for invoices.">
+        <div class="diagram-flow diagram-flow--timesheet">
           <section class="diagram-flow__group">
-            <p class="diagram-flow__label">Timesheet approval</p>
-            <div class="diagram-flow__track diagram-flow__track--three">
+            <p class="diagram-flow__label">One continuous data flow</p>
+            <div class="diagram-flow__track diagram-flow__track--four">
               <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h4"/></svg></span><span class="node-copy"><strong>Online timesheet form</strong><span>Workers submit their weekly hours.</span></span></article>
               <span class="diagram-flow__arrow diagram-flow__arrow--right" aria-hidden="true"></span>
-              <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 8 8 6 8-6"/></svg></span><span class="node-copy"><strong>PDF Generator &amp; Batch Emailer</strong><span>PDF reports are generated and sent for approval.</span></span></article>
+              <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 8 8 6 8-6"/></svg></span><span class="node-copy"><strong>PDF Generator &amp; Batch Emailer</strong><span>Code behind the Google Sheet generates PDFs and sends the right emails.</span></span><a class="workflow-media-trigger" href="#batch-sheet-dialog"><img src="assets/batch-pdf-emailer-anonymised.png" alt="Anonymised Google Sheet batch email queue"><span class="workflow-media-copy"><strong>See the Google Sheet</strong><small>Automated code powers the actions.</small></span></a></article>
               <span class="diagram-flow__arrow diagram-flow__arrow--right" aria-hidden="true"></span>
-              <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.3 2.3 4.7-4.8"/></svg></span><span class="node-copy"><strong>Timesheet data transfer with webhooks</strong><span>Systems speak to each other.</span></span></article>
+              <article class="diagram-flow__node"><span class="node-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.3 2.3 4.7-4.8"/></svg></span><span class="node-copy"><strong>Timesheet data transfer with webhooks</strong><span>The webhook connects the Google Sheet directly to the Blue Folder.</span></span></article>
+              <span class="diagram-flow__arrow diagram-flow__arrow--right" aria-hidden="true"></span>
+              <article class="diagram-flow__node diagram-flow__node--hub"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1"/></svg></span><span class="node-copy"><strong>The Blue Folder</strong><span>One timesheet stream is processed into payroll and sales data.</span></span><a class="workflow-media-trigger" href="#blue-folder-dialog"><span class="workflow-video-thumb"><img src="assets/blue-folder-workflow-sanitised.jpg" alt="Blue Folder workflow walkthrough preview"><span aria-hidden="true">▶</span></span><span class="workflow-media-copy"><strong>Watch the Blue Folder</strong><small>Accelerated, privacy-safe walkthrough.</small></span></a></article>
             </div>
           </section>
-          <span class="diagram-flow__arrow diagram-flow__arrow--down" aria-hidden="true"></span>
-          <article class="diagram-flow__node diagram-flow__node--hub"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1"/></svg></span><span class="node-copy"><strong>The Blue Folder</strong><span>One timesheet data stream is processed simultaneously into payroll and sales data.</span></span></article>
           <span class="diagram-flow__arrow diagram-flow__arrow--down" aria-hidden="true"></span>
           <section class="diagram-flow__group">
             <p class="diagram-flow__label">One timesheet stream, two business outputs</p>
@@ -78,10 +66,8 @@
           </section>
         </div>
       </figure>
-      <figure class="batch-preview">
-        <img src="assets/batch-pdf-emailer-anonymised.png" alt="An anonymised batch email queue showing generic client aliases, report status and a weekly-hours PDF preview.">
-        <figcaption><strong>Batch reporting, without repeated admin.</strong> One review queue generates the relevant PDF report and sends it to the right client. All names, addresses and report details shown here are illustrative aliases.</figcaption>
-      </figure>
+      <section class="media-modal" id="batch-sheet-dialog" role="dialog" aria-modal="true" aria-labelledby="batch-sheet-dialog-title"><a class="media-modal__backdrop" href="#case-flow" aria-label="Close Google Sheet preview"></a><div class="media-modal__panel"><div class="media-modal__header"><div><span class="kicker">PDF Generator &amp; Batch Emailer</span><h2 id="batch-sheet-dialog-title">Code turns the review queue into sent PDF reports.</h2></div><a class="media-modal__close" href="#case-flow" aria-label="Close Google Sheet preview">×</a></div><div class="media-visual-with-note"><img src="assets/batch-pdf-emailer-anonymised.png" alt="Anonymised Google Sheet batch email queue with generic clients and sent report status"><span class="media-code-note"><b aria-hidden="true">&lt;/&gt;</b><span><strong>Automation code</strong><small>Generates PDFs and sends emails.</small></span></span></div><p>One spreadsheet interface is backed by automation that creates client-specific PDF reports and sends each one to the correct recipient. All displayed names and addresses are aliases.</p></div></section>
+      <section class="media-modal" id="blue-folder-dialog" role="dialog" aria-modal="true" aria-labelledby="blue-folder-dialog-title"><a class="media-modal__backdrop" href="#case-flow" aria-label="Close Blue Folder walkthrough"></a><div class="media-modal__panel"><div class="media-modal__header"><div><span class="kicker">The Blue Folder</span><h2 id="blue-folder-dialog-title">From approved timesheets to usable business data.</h2></div><a class="media-modal__close" href="#case-flow" aria-label="Close Blue Folder walkthrough">×</a></div><video controls playsinline preload="metadata" poster="assets/blue-folder-workflow-sanitised.jpg" aria-label="Privacy-safe Blue Folder workflow walkthrough"><source src="assets/blue-folder-workflow-sanitised.mp4" type="video/mp4">Your browser does not support embedded video.</video><p>This short view focuses only on the Blue Folder reports workspace. Sensitive client, worker and financial details are removed.</p></div></section>
     </div>
   </section>
 
@@ -95,6 +81,6 @@
   </div>
 </footer>
 <script src="assets/site-config.js"></script>
-<script src="assets/site.js"></script>
+<script src="assets/site.js?v=20260815g"></script>
 
 </body></html>
