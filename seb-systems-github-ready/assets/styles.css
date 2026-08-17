@@ -345,6 +345,20 @@ p { color: var(--ink-soft); }
 .case-workflow-step h2 { margin-bottom: 14px; font-size: clamp(1.55rem, 2.6vw, 2.6rem); }
 .case-workflow-step p { max-width: 650px; margin-bottom: 0; font-size: 1rem; }
 .case-workflow-step--result { border-bottom: 1px solid var(--line); }
+.timesheet-example { max-width: 650px; margin-top: 22px; padding: 16px; background: var(--blue-pale); border: 1px solid #bfdbfe; border-radius: 14px; }
+.timesheet-example > strong { display: block; color: var(--blue-dark); font-size: 0.88rem; }
+.timesheet-example__hours { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin-top: 11px; }
+.timesheet-example__hours span { padding: 7px 4px; color: var(--muted); font-size: 0.69rem; line-height: 1.15; text-align: center; background: white; border-radius: 7px; }
+.timesheet-example__hours b { display: block; margin-top: 3px; color: var(--ink); font-size: 0.9rem; }
+.timesheet-example__hours .timesheet-example__total { color: white; background: var(--blue); }
+.timesheet-example__hours .timesheet-example__total b { color: white; }
+.timesheet-example__split { margin-top: 12px !important; color: var(--blue-dark); font-size: 0.84rem !important; font-weight: 650; }
+.timesheet-example__outputs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+.timesheet-example__outputs > div { padding: 10px; background: white; border-radius: 8px; }
+.timesheet-example__outputs span, .timesheet-example__outputs b { display: block; }
+.timesheet-example__outputs span { margin-bottom: 4px; color: var(--blue-dark); font-size: 0.72rem; font-weight: 700; }
+.timesheet-example__outputs b { font-size: 0.76rem; line-height: 1.4; }
+.timesheet-example > small { display: block; margin-top: 10px; color: var(--muted); font-size: 0.69rem; line-height: 1.35; }
 .diagram-card {
   margin: 28px auto 44px;
   padding: 22px;
@@ -696,4 +710,7 @@ p { color: var(--ink-soft); }
   .brand-copy span { display: none; }
   .brand-mark { height: 30px; }
   .header-phone { font-size: 0.72rem; }
+  .timesheet-example { padding: 13px; }
+  .timesheet-example__hours { grid-template-columns: repeat(3, 1fr); }
+  .timesheet-example__outputs { grid-template-columns: 1fr; }
 }
