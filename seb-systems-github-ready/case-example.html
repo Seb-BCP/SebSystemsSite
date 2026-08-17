@@ -6,7 +6,7 @@
   <meta name="description" content="A practical case example showing how Blue Collar People systems were connected in stages.">
   <meta name="theme-color" content="#111827">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/styles.css?v=20260815h">
+  <link rel="stylesheet" href="assets/styles.css?v=20260817a">
   <title>Case Example | Sebastian Ortiz</title>
 </head>
 <body>
@@ -47,23 +47,23 @@
         <article class="case-workflow-step"><span>Step 2</span><h2>Each client receives the right report to approve.</h2><p>We collect and review the submitted hours, then the system creates a PDF report for each worker and sends it to the correct client for approval.</p></article>
         <span class="workflow-vertical-arrow" aria-hidden="true"></span><span class="workflow-vertical-spacer" aria-hidden="true"></span>
 
-        <article class="workflow-vertical-node"><span class="node-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.3 2.3 4.7-4.8"/></svg></span><span class="node-copy"><strong>Timesheet data transfer with webhooks</strong><span>The webhook connects the Google Sheet directly to the Blue Folder.</span></span></article>
-        <article class="case-workflow-step"><span>Step 3</span><h2>Approved timesheet data moves automatically.</h2><p>Once a client approves the report, webhooks transfer the timesheet data from the Google Sheet to the Blue Folder.</p></article>
+        <article class="workflow-vertical-node"><span class="node-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.3 2.3 4.7-4.8"/></svg></span><span class="node-copy"><strong>Timesheet data transfer with webhooks</strong><span>The webhook connects the Google Sheet directly to custom software (The Blue Folder).</span></span></article>
+        <article class="case-workflow-step"><span>Step 3</span><h2>Approved timesheet data moves automatically.</h2><p>Once a client approves the report, webhooks transfer the timesheet data from the Google Sheet directly to custom software: the Blue Folder.</p></article>
         <span class="workflow-vertical-arrow" aria-hidden="true"></span><span class="workflow-vertical-spacer" aria-hidden="true"></span>
 
-        <article class="workflow-vertical-node workflow-vertical-node--hub"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1"/></svg></span><span class="node-copy"><strong>The Blue Folder</strong><span>One timesheet stream is processed into payroll and sales data.</span></span><a class="workflow-media-trigger" href="#blue-folder-dialog"><span class="workflow-video-thumb"><img src="assets/blue-folder-workflow-sanitised.jpg?v=2" alt="Blue Folder workflow walkthrough preview"><span aria-hidden="true">▶</span></span><span class="workflow-media-copy"><strong>Watch the Blue Folder</strong><small>Accelerated, privacy-safe walkthrough.</small></span></a></article>
+        <article class="workflow-vertical-node workflow-vertical-node--hub"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1"/></svg></span><span class="node-copy"><strong>The Blue Folder</strong><span>Custom software built specifically for BCP requirements. One timesheet stream is processed into payroll and sales data.</span></span><a class="workflow-media-trigger" href="#blue-folder-dialog" data-loom-open><span class="workflow-video-thumb workflow-video-thumb--loom" aria-hidden="true"><span>▶</span></span><span class="workflow-media-copy"><strong>Watch the Blue Folder</strong><small>Opens and plays immediately.</small></span></a></article>
         <article class="case-workflow-step"><span>Step 4</span><h2>The Blue Folder prepares both business outputs.</h2><p>The Blue Folder organises the approved timesheet data into a payroll file and sales data ready to generate invoices.</p></article>
         <span class="workflow-vertical-arrow" aria-hidden="true"></span><span class="workflow-vertical-spacer" aria-hidden="true"></span>
 
-        <article class="workflow-vertical-node workflow-vertical-node--result"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="m3 9 9-5 9 5"/><path d="M4 10h16"/><path d="M6 10v7"/><path d="M10 10v7"/><path d="M14 10v7"/><path d="M18 10v7"/><path d="M3 20h18"/></svg></span><span class="node-copy"><strong>Payroll file &amp; invoice data</strong><span>One data stream supports two business purposes.</span></span></article>
+        <article class="workflow-vertical-node workflow-vertical-node--result"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="m3 9 9-5 9 5"/><path d="M4 10h16"/><path d="M6 10v7"/><path d="M10 10v7"/><path d="M14 10v7"/><path d="M18 10v7"/><path d="M3 20h18"/></svg></span><span class="node-copy"><strong>Payroll file &amp; invoice data</strong><span>From one timesheet submission, payroll and invoicing are organised in a single step—so your team is not entering the same information twice.</span></span></article>
         <article class="case-workflow-step case-workflow-step--result"><span>Result</span><h2>Payroll and invoicing are ready to move.</h2><p>The same approved timesheet data is prepared for payroll processing and for generating client invoices.</p></article>
       </div>
       <section class="media-modal" id="batch-sheet-dialog" role="dialog" aria-modal="true" aria-labelledby="batch-sheet-dialog-title"><a class="media-modal__backdrop" href="#case-flow" aria-label="Close Google Sheet preview"></a><div class="media-modal__panel"><div class="media-modal__header"><div><span class="kicker">PDF Generator &amp; Batch Emailer</span><h2 id="batch-sheet-dialog-title">Code turns the review queue into sent PDF reports.</h2></div><a class="media-modal__close" href="#case-flow" aria-label="Close Google Sheet preview">×</a></div><div class="media-visual-with-note"><img src="assets/batch-pdf-emailer-anonymised.png" alt="Anonymised Google Sheet batch email queue with generic clients and sent report status"><span class="media-code-note"><b aria-hidden="true">&lt;/&gt;</b><span><strong>Automation code</strong><small>Generates PDFs and sends emails.</small></span></span></div><p>One spreadsheet interface is backed by automation that creates client-specific PDF reports and sends each one to the correct recipient. All displayed names and addresses are aliases.</p></div></section>
-      <section class="media-modal" id="blue-folder-dialog" role="dialog" aria-modal="true" aria-labelledby="blue-folder-dialog-title"><a class="media-modal__backdrop" href="#case-flow" aria-label="Close Blue Folder walkthrough"></a><div class="media-modal__panel"><div class="media-modal__header"><div><span class="kicker">The Blue Folder</span><h2 id="blue-folder-dialog-title">From approved timesheets to usable business data.</h2></div><a class="media-modal__close" href="#case-flow" aria-label="Close Blue Folder walkthrough">×</a></div><video controls playsinline preload="metadata" poster="assets/blue-folder-workflow-sanitised.jpg?v=2" aria-label="Privacy-safe Blue Folder workflow walkthrough"><source src="assets/blue-folder-workflow-sanitised.mp4?v=2" type="video/mp4">Your browser does not support embedded video.</video><p>This short view focuses on the Blue Folder timesheet workspace. Client and worker names are removed.</p></div></section>
+      <section class="media-modal" id="blue-folder-dialog" role="dialog" aria-modal="true" aria-labelledby="blue-folder-dialog-title"><a class="media-modal__backdrop" href="#case-flow" data-loom-close aria-label="Close Blue Folder walkthrough"></a><div class="media-modal__panel"><div class="media-modal__header"><div><span class="kicker">The Blue Folder</span><h2 id="blue-folder-dialog-title">From approved timesheets to usable business data.</h2></div><a class="media-modal__close" href="#case-flow" data-loom-close aria-label="Close Blue Folder walkthrough">×</a></div><div class="loom-embed-shell"><iframe src="about:blank" data-loom-player data-loom-src="https://www.loom.com/embed/54a91aae383d4a2b918ac24986636e3e?autoplay=1" title="Blue Folder walkthrough" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><p>The walkthrough begins as soon as you select it.</p></div></section>
     </div>
   </section>
 
-  <section><div class="container cta-panel"><div><h2>Free up your time to spend on the more important things in life.</h2></div><a class="cta-phone" href="tel:+61458899024">Call: 0458 899 024</a></div></section>
+  <section><div class="container cta-panel"><div><h2>Free up time for the important things in life—and avoid the cost of hiring extra administration staff.</h2></div><div class="cta-contact"><a class="cta-phone" href="tel:+61458899024">Call: 0458 899 024</a><p>Let’s see if I can help you.</p></div></div></section>
 </main>
 
 <footer class="site-footer">
@@ -73,6 +73,6 @@
   </div>
 </footer>
 <script src="assets/site-config.js"></script>
-<script src="assets/site.js?v=20260815h"></script>
+<script src="assets/site.js?v=20260817a"></script>
 
 </body></html>

@@ -30,6 +30,20 @@
     loomHost.appendChild(iframe);
   }
 
+  const loomPlayer = document.querySelector('[data-loom-player]');
+  if (loomPlayer) {
+    document.querySelectorAll('[data-loom-open]').forEach(function (trigger) {
+      trigger.addEventListener('click', function () {
+        loomPlayer.src = loomPlayer.dataset.loomSrc;
+      });
+    });
+    document.querySelectorAll('[data-loom-close]').forEach(function (trigger) {
+      trigger.addEventListener('click', function () {
+        loomPlayer.src = 'about:blank';
+      });
+    });
+  }
+
   document.querySelectorAll('[data-contact-email]').forEach(function (link) {
     if (config.contactEmail) {
       link.href = 'mailto:' + config.contactEmail;
