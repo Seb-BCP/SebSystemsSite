@@ -224,6 +224,7 @@ p { color: var(--ink-soft); }
 }
 .cta-panel h2 { margin-bottom: 18px; color: white; }
 .cta-panel p { color: rgba(255,255,255,.78); margin-bottom: 0; }
+.cta-action { align-self: center; justify-self: end; max-width: 100%; }
 .cta-phone {
   align-self: center;
   justify-self: end;
@@ -353,6 +354,7 @@ p { color: var(--ink-soft); }
 }
 .case-workflow-step h2 { margin-bottom: 14px; font-size: clamp(1.55rem, 2.6vw, 2.6rem); }
 .case-workflow-step p { max-width: 650px; margin-bottom: 0; font-size: 1rem; }
+.case-workflow-step .case-result-proof { margin-bottom: 12px; color: var(--blue-dark); font-weight: 760; }
 .case-workflow-step--result { border-bottom: 1px solid var(--line); }
 .timesheet-example { max-width: 650px; margin-top: 22px; padding: 16px; background: var(--blue-pale); border: 1px solid #bfdbfe; border-radius: 14px; }
 .timesheet-example > strong { display: block; color: var(--blue-dark); font-size: 0.88rem; }
@@ -641,6 +643,7 @@ p { color: var(--ink-soft); }
 .footer-inner a { text-decoration: none; font-weight: 750; }
 
 .pricing-section { padding: 58px 0 72px; }
+.pricing-cta { margin-top: 32px; padding: 42px 48px; }
 .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .pricing-card { min-height: 330px; display: flex; flex-direction: column; padding: 32px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-small); }
 .pricing-card__type { display: block; margin-bottom: 46px; color: var(--blue-dark); font-size: 0.78rem; font-weight: 850; text-transform: uppercase; letter-spacing: .06em; }
@@ -663,6 +666,7 @@ p { color: var(--ink-soft); }
   .cta-phone { justify-self: start; }
   .cta-contact { justify-self: start; text-align: left; }
   .cta-contact .cta-phone { justify-self: start; }
+  .cta-action { justify-self: start; }
 }
 
 @media (max-width: 1080px) {
