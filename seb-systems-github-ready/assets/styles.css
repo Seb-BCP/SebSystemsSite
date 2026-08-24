@@ -66,7 +66,7 @@ button { cursor: pointer; }
 }
 .brand-copy { display: grid; line-height: 1.12; }
 .brand-copy strong { font-size: 1rem; letter-spacing: -0.03em; }
-.brand-copy span { margin-top: 5px; color: var(--muted); font-size: 0.72rem; }
+.brand-copy span { margin-top: 5px; color: var(--ink); font-size: 0.72rem; }
 .header-contact {
   align-self: flex-start;
   display: grid;
@@ -76,16 +76,16 @@ button { cursor: pointer; }
   padding-left: 18px;
   border-left: 1px solid var(--line);
 }
-.header-phone {
+.header-phone,
+.header-email {
   color: var(--blue-dark);
   font-size: 0.82rem;
   font-weight: 800;
   text-decoration: none;
   white-space: nowrap;
 }
-.header-phone:hover { color: var(--blue); }
-.header-email { color: var(--muted); font-size: 0.66rem; font-weight: 700; line-height: 1.15; text-decoration: none; white-space: nowrap; }
-.header-email:hover { color: var(--blue-dark); }
+.header-phone:hover,
+.header-email:hover { color: var(--blue); }
 .site-nav { display: flex; align-items: center; gap: 8px; }
 .site-nav a { padding: 8px 12px; border: 1px solid transparent; border-radius: 10px; color: var(--ink-soft); font-size: 0.84rem; font-weight: 700; text-decoration: none; }
 .site-nav a:hover { color: var(--ink); }
@@ -717,7 +717,8 @@ p { color: var(--ink-soft); }
   .header-inner { gap: 14px; }
   .brand-area { gap: 12px; }
   .header-contact { padding-left: 12px; }
-  .header-phone { font-size: 0.76rem; }
+  .header-phone,
+  .header-email { font-size: 0.76rem; }
   .menu-toggle { display: block; }
   .site-nav {
     position: absolute;

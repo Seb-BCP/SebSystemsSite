@@ -68,7 +68,8 @@
             'Phone: ' + (data.get('phone') || '') + '\n' +
             'Suburb: ' + (data.get('suburb') || '') + '\n\n' +
             'Process causing trouble:\n' + (data.get('problem') || '') + '\n\n' +
-            'Current process:\n' + (data.get('current_process') || '')
+            'Current process:\n' + (data.get('current_process') || '') + '\n\n' +
+            'What they are after:\n' + (data.get('what_after') || '')
           );
           window.location.href = 'mailto:' + config.contactEmail + '?subject=' + subject + '&body=' + body;
         } else if (status) {
