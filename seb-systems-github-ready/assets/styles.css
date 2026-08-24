@@ -326,6 +326,7 @@ p { color: var(--ink-soft); }
 .workflow-vertical-arrow {
   position: relative;
   width: 2px;
+  margin: 8px 0 12px;
   min-height: 46px;
   height: auto;
   align-self: stretch;
@@ -706,7 +707,7 @@ p { color: var(--ink-soft); }
   .workflow-vertical-node,
   .workflow-vertical-arrow,
   .case-workflow-step { grid-column: 1; }
-  .workflow-vertical-arrow { min-height: 32px; height: 32px; }
+  .workflow-vertical-arrow { margin: 6px 0 8px; min-height: 32px; height: 32px; }
   .case-workflow-step { padding: 24px 0; }
   .workforce-callout__intro { grid-template-columns: 1fr; }
 }
