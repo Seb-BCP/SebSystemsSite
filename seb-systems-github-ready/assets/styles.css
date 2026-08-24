@@ -345,6 +345,14 @@ p { color: var(--ink-soft); }
 .case-workflow-step h2 { margin-bottom: 14px; font-size: clamp(1.55rem, 2.6vw, 2.6rem); }
 .case-workflow-step p { max-width: 650px; margin-bottom: 0; font-size: 1rem; }
 .case-workflow-step--result { border-bottom: 1px solid var(--line); }
+.connected-systems-shot { max-width: 650px; margin: 22px 0 0; overflow: hidden; background: white; border: 1px solid #bfdbfe; border-radius: 14px; box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08); }
+.connected-systems-shot img { width: 100%; aspect-ratio: 4 / 3; display: block; object-fit: cover; object-position: center center; }
+.connected-systems-shot figcaption { display: grid; gap: 8px; padding: 14px 16px 15px; }
+.connected-systems-shot__label { color: var(--blue-dark); font-size: 0.7rem; font-weight: 850; letter-spacing: 0.08em; text-transform: uppercase; }
+.connected-systems-shot strong { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; align-items: center; color: var(--ink); font-size: 0.8rem; line-height: 1.25; }
+.connected-systems-shot strong span { min-width: 0; }
+.connected-systems-shot strong b { color: var(--blue); font-size: 1.15rem; line-height: 1; }
+.connected-systems-shot figcaption > span:last-child { color: var(--muted); font-size: 0.78rem; line-height: 1.4; }
 .timesheet-example { max-width: 650px; margin-top: 22px; padding: 16px; background: var(--blue-pale); border: 1px solid #bfdbfe; border-radius: 14px; }
 .timesheet-example > strong { display: block; color: var(--blue-dark); font-size: 0.88rem; }
 .timesheet-example__hours { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin-top: 11px; }
@@ -713,4 +721,6 @@ p { color: var(--ink-soft); }
   .timesheet-example { padding: 13px; }
   .timesheet-example__hours { grid-template-columns: repeat(3, 1fr); }
   .timesheet-example__outputs { grid-template-columns: 1fr; }
+  .connected-systems-shot strong { grid-template-columns: 1fr; gap: 4px; }
+  .connected-systems-shot strong b { display: none; }
 }
