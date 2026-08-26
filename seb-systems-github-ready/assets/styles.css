@@ -291,7 +291,7 @@ p { color: var(--ink-soft); }
     row-gap: 0;
     align-items: stretch;
   }
-  .process-card { height: 250px; min-height: 0; }
+  .process-card { height: 235px; min-height: 0; }
   .process-node {
     position: absolute;
     top: 50%;
@@ -319,17 +319,17 @@ p { color: var(--ink-soft); }
   .process-node--blue {
     --process-colour: var(--process-blue);
     --process-outline: rgba(22, 88, 184, .45);
-    left: calc(25% - 22.596px);
+    left: calc(25% - 21.3864px);
   }
   .process-node--purple {
     --process-colour: var(--process-purple);
     --process-outline: rgba(112, 64, 189, .45);
-    left: calc(50% - 12.096px);
+    left: calc(50% - 10.8864px);
   }
   .process-node--teal {
     --process-colour: var(--process-teal);
     --process-outline: rgba(22, 155, 155, .45);
-    left: calc(75% - 1.596px);
+    left: calc(75% - 0.3864px);
   }
 }
 
