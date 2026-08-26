@@ -221,6 +221,16 @@ p { color: var(--ink-soft); }
 .dark-section h2, .dark-section h3 { color: white; }
 .dark-section p { color: rgba(255,255,255,.66); }
 .build-card { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.13); }
+.systems-section__top {
+  display: grid;
+  grid-template-columns: minmax(0, 2.9fr) minmax(0, 2.1fr);
+  align-items: start;
+  gap: clamp(48px, 6vw, 96px);
+  margin-bottom: 42px;
+}
+.systems-section__heading { display: block; margin: 0; }
+.systems-geometry { width: 100%; margin: 0; }
+.systems-geometry img { display: block; width: 100%; height: auto; opacity: 1; }
 
 .process-section {
   --process-blue: #1658b8;
@@ -866,6 +876,8 @@ p { color: var(--ink-soft); }
   .hero-photo { min-height: 430px; }
   .section-heading { display: block; }
   .section-heading p { margin-top: 18px; }
+  .systems-section__top { grid-template-columns: 1fr; gap: 28px; }
+  .systems-geometry { width: min(100%, 520px); justify-self: center; }
   .problem-grid, .build-grid, .pricing-grid, .process-grid, .form-grid { grid-template-columns: 1fr; }
   .problem-card, .build-card { min-height: auto; }
   .process-step { min-height: auto; padding: 32px 28px; }
