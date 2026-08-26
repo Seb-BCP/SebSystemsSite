@@ -342,6 +342,8 @@ p { color: var(--ink-soft); }
   }
 }
 
+.process-section + section { padding-top: 52px; }
+
 .cta-panel {
   display: grid;
   grid-template-columns: 1.2fr .8fr;
@@ -857,6 +859,7 @@ p { color: var(--ink-soft); }
   .site-nav.is-open { display: flex; }
   .site-nav a { padding: 13px 12px; }
   section { padding: 74px 0; }
+  .process-section + section { padding-top: 37px; }
   .hero { padding-top: 20px; }
   .hero-grid { min-height: auto; }
   .hero-copy { padding: 50px 26px; }
