@@ -319,17 +319,17 @@ p { color: var(--ink-soft); }
   .process-node--blue {
     --process-colour: var(--process-blue);
     --process-outline: rgba(22, 88, 184, .45);
-    left: calc(25% - 20.58px);
+    left: calc(25% - 22.596px);
   }
   .process-node--purple {
     --process-colour: var(--process-purple);
     --process-outline: rgba(112, 64, 189, .45);
-    left: calc(50% - 10.08px);
+    left: calc(50% - 12.096px);
   }
   .process-node--teal {
     --process-colour: var(--process-teal);
     --process-outline: rgba(22, 155, 155, .45);
-    left: calc(75% + 0.42px);
+    left: calc(75% - 1.596px);
   }
 }
 
