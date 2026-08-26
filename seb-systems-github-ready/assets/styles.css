@@ -151,7 +151,7 @@ p { color: var(--ink-soft); }
 .hero-grid {
   min-height: 650px;
   display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
+  grid-template-columns: 1fr 1fr;
   background: white;
   border: 1px solid var(--line);
   border-radius: 28px;
@@ -159,8 +159,8 @@ p { color: var(--ink-soft); }
   overflow: hidden;
 }
 .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: 72px 64px; }
-.hero-copy h1 { max-width: 720px; margin-bottom: 26px; }
-.hero-copy .lead { max-width: 650px; margin-bottom: 0; }
+.hero-copy h1 { max-width: 720px; margin-bottom: 26px; font-size: clamp(3rem, 5.7vw, 5.4rem); }
+.hero-copy .lead { max-width: 650px; margin-bottom: 0; font-size: clamp(1rem, 1.3vw, 1.12rem); }
 .hero-photo {
   position: relative;
   min-height: 650px;
@@ -185,7 +185,7 @@ p { color: var(--ink-soft); }
   border-left: 5px solid var(--blue);
   background: var(--blue-pale);
   color: var(--ink-soft);
-  font-size: 0.96rem;
+  font-size: 0.9rem;
 }
 .credibility strong { color: var(--ink); }
 
