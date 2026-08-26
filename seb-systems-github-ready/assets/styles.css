@@ -297,8 +297,8 @@ p { color: var(--ink-soft); }
     top: 50%;
     z-index: 2;
     display: block;
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
     border: 1.25px solid var(--process-outline);
     border-radius: 50%;
     background: var(--white);
@@ -319,17 +319,17 @@ p { color: var(--ink-soft); }
   .process-node--blue {
     --process-colour: var(--process-blue);
     --process-outline: rgba(22, 88, 184, .45);
-    left: calc(25% - 31.5px);
+    left: calc(25% - 10.5px);
   }
   .process-node--purple {
     --process-colour: var(--process-purple);
     --process-outline: rgba(112, 64, 189, .45);
-    left: calc(50% - 21px);
+    left: 50%;
   }
   .process-node--teal {
     --process-colour: var(--process-teal);
     --process-outline: rgba(22, 155, 155, .45);
-    left: calc(75% - 10.5px);
+    left: calc(75% + 10.5px);
   }
 }
 
