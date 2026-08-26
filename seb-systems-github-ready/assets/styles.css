@@ -198,8 +198,10 @@ p { color: var(--ink-soft); }
 }
 .section-heading h2 { max-width: 780px; margin-bottom: 0; }
 .section-heading p { max-width: 430px; margin-bottom: 0; }
-.build-card--system { display: flex; flex-direction: column; justify-content: center; }
-.build-card--system .system-puzzle-icon { width: clamp(3.25rem, 4.1vw, 4.15rem); height: clamp(3.25rem, 4.1vw, 4.15rem); margin: 0 0 24px auto; color: rgba(255,255,255,.13); }
+.section-heading--with-icon { align-items: center; }
+.section-heading__title { display: flex; width: 100%; align-items: center; gap: clamp(28px, 4vw, 64px); }
+.section-heading--with-icon h2 { flex: 1 1 780px; min-width: 0; }
+.section-heading--with-icon .system-puzzle-icon { flex: 0 0 auto; width: clamp(9.5rem, 15vw, 13.5rem); height: clamp(9.5rem, 15vw, 13.5rem); color: rgba(255,255,255,.13); }
 .section-heading--process { margin-bottom: 26px; }
 .section-heading--process h2 { font-size: clamp(2rem, 3vw, 2.65rem); }
 .problem-grid, .build-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
