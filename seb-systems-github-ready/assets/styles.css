@@ -399,6 +399,7 @@ p { color: var(--ink-soft); }
 .case-hero .page-hero-shell { padding: 38px 48px; }
 .case-hero__content { display: grid; grid-template-columns: minmax(0, 1fr) clamp(210px, 22vw, 300px); gap: clamp(24px, 4vw, 48px); align-items: center; }
 .case-hero h1 { max-width: none; margin-bottom: 0; font-size: clamp(2.2rem, 3vw, 3.6rem); line-height: 1.1; }
+.case-hero__subtitle { margin: 18px 0 0; color: var(--ink-soft); font-size: clamp(1rem, 1.5vw, 1.25rem); font-weight: 700; line-height: 1.65; }
 .case-hero__photo { margin: 0; overflow: hidden; border: 1px solid #bfdbfe; border-radius: 14px; box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08); }
 .case-hero__photo img { width: 100%; aspect-ratio: 1; display: block; object-fit: cover; }
 .case-hero__photo--systems img { aspect-ratio: 4 / 5; object-position: 55% center; }
