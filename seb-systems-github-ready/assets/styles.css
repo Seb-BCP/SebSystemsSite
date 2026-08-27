@@ -758,9 +758,7 @@ p { color: var(--ink-soft); }
 .small-business-takeaway .kicker { margin-bottom: 14px; }
 .small-business-takeaway p { margin-bottom: 0; }
 
-.contact-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; align-items: start; }
-.contact-intro { position: sticky; top: 112px; }
-.contact-intro h1 { margin-bottom: 24px; }
+.contact-grid { display: grid; grid-template-columns: minmax(0, 760px); justify-content: center; align-items: start; }
 .contact-phone { margin: 18px 0; }
 .contact-phone a { color: var(--blue-dark); font-weight: 800; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .contact-repeat-link { grid-column: 2; justify-self: end; margin-top: 18px; color: var(--blue-dark); font-size: 0.9rem; font-weight: 800; text-decoration: none; }
@@ -804,7 +802,6 @@ p { color: var(--ink-soft); }
   .hero-photo { min-height: 540px; }
   .about-photo { position: relative; top: auto; min-height: 520px; }
   .about-photo img { min-height: 520px; }
-  .contact-intro { position: static; }
   .contact-repeat-link { grid-column: auto; justify-self: start; }
   .problem-grid, .build-grid, .pricing-grid { grid-template-columns: 1fr 1fr; }
   .cta-phone { justify-self: start; }
