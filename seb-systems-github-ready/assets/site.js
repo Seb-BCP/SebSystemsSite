@@ -71,6 +71,9 @@
             'Current process:\n' + (data.get('current_process') || '') + '\n\n' +
             'What they are after:\n' + (data.get('what_after') || '')
           );
+          if (status) {
+            status.textContent = 'Message sent, I will be in touch shortly.';
+          }
           window.location.href = 'mailto:' + config.contactEmail + '?subject=' + subject + '&body=' + body;
         } else if (status) {
           status.textContent = 'The inquiry form is ready, but the email or form endpoint still needs to be added in assets/site-config.js.';
