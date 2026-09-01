@@ -485,6 +485,10 @@ p { color: var(--ink-soft); }
   justify-self: center;
   background: var(--blue);
 }
+.workflow-card-track > .workflow-vertical-connector {
+  height: calc(100% + var(--workflow-main-text-start));
+  align-self: start;
+}
 .workflow-vertical-connector::before {
   content: "";
   position: absolute;
@@ -545,6 +549,10 @@ p { color: var(--ink-soft); }
 .workflow-card-track--step-four-hub .workflow-vertical-connector::before,
 .workflow-card-track--step-four-hub .workflow-vertical-connector::after {
   top: calc(50% + ((34px + var(--workflow-calculation-days-start)) / 2));
+}
+.workflow-card-track--step-four-hub > .workflow-vertical-connector {
+  height: 100%;
+  align-self: stretch;
 }
 .workflow-card-track--step-four-output {
   grid-column: 1;
@@ -893,7 +901,7 @@ p { color: var(--ink-soft); }
 @media (max-width: 880px) {
   .case-workflow-row { grid-template-columns: 1fr; }
   .workflow-card-track { min-height: auto; grid-template-rows: auto 32px; padding-top: 0; }
-  .workflow-vertical-connector { min-height: 32px; }
+  .workflow-vertical-connector { min-height: 32px; height: auto; align-self: stretch; }
   .case-workflow-step { padding: 24px 0 34px; }
   .case-workflow-row--step-four { grid-template-rows: none; }
   .case-workflow-row--step-four > * { grid-column: auto; grid-row: auto; }
