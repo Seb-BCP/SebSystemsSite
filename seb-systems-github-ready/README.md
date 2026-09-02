@@ -5,7 +5,7 @@ A small, static website ready to place in a GitHub repository and deploy through
 ## Site structure
 
 - `index.html` — Home, three core problems, services and process
-- `case-example.html` — Blue Collar People case example, Loom placeholder and two diagrams
+- `case-example.html` — Project examples, including the Blue Collar People case study
 - `about.html` — About Seb and philosophy/approach combined
 - `contact.html` — Screened inquiry form
 - `assets/styles.css` — Shared styling

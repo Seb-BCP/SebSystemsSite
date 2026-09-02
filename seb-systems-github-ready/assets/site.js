@@ -14,6 +14,46 @@
     });
   }
 
+  const projectTabs = Array.from(document.querySelectorAll('[data-project-tab]'));
+  if (projectTabs.length) {
+    const activateProjectTab = function (tab, focusTab) {
+      const panelId = tab.getAttribute('aria-controls');
+      const activePanel = panelId ? document.getElementById(panelId) : null;
+      if (!activePanel) return;
+
+      projectTabs.forEach(function (candidate) {
+        const selected = candidate === tab;
+        candidate.setAttribute('aria-selected', String(selected));
+        candidate.tabIndex = selected ? 0 : -1;
+
+        const candidatePanelId = candidate.getAttribute('aria-controls');
+        const candidatePanel = candidatePanelId ? document.getElementById(candidatePanelId) : null;
+        if (candidatePanel) candidatePanel.hidden = !selected;
+      });
+
+      if (focusTab) tab.focus();
+    };
+
+    projectTabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () {
+        activateProjectTab(tab, false);
+      });
+
+      tab.addEventListener('keydown', function (event) {
+        let nextIndex = null;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % projectTabs.length;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + projectTabs.length) % projectTabs.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = projectTabs.length - 1;
+
+        if (nextIndex !== null) {
+          event.preventDefault();
+          activateProjectTab(projectTabs[nextIndex], true);
+        }
+      });
+    });
+  }
+
   document.querySelectorAll('[data-photo]').forEach(function (img) {
     img.addEventListener('error', function () { img.style.display = 'none'; });
     if (img.complete && img.naturalWidth === 0) img.style.display = 'none';
