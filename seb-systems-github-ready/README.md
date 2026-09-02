@@ -8,6 +8,8 @@ A small, static website ready to place in a GitHub repository and deploy through
 - `case-example.html` — Project examples, including the Blue Collar People case study
 - `about.html` — About Seb and philosophy/approach combined
 - `contact.html` — Screened inquiry form
+- `pricing.html` — Pricing for system connections, workflow automation and custom software
+- `testimonials.html` — Client feedback and future testimonial placeholders
 - `assets/styles.css` — Shared styling
 - `assets/site.js` — Navigation, photo fallback, Loom and form behaviour
 - `assets/site-config.js` — The three values you should edit
