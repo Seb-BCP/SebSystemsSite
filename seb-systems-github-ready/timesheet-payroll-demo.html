@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A fictional-data interactive demo of Black Arc Payroll.">
+  <meta name="theme-color" content="#f6f8fb">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon-upgraded-boat.png" type="image/png">
+  <link rel="stylesheet" href="assets/timesheet-payroll-demo.css?v=20260903c">
+  <title>Black Arc Payroll — Interactive Demo</title>
+</head>
+<body>
+  <a class="demo-skip-link" href="#timesheets">Skip to Time Sheets</a>
+
+  <div class="app-container demo-app-container">
+    <header class="app-bar">
+      <a class="app-bar-brand" href="case-example.html#case-flow" aria-label="Back to the project example">
+        <span class="app-bar-brand-primary">Black Arc</span>
+        <span class="app-bar-brand-separator" aria-hidden="true">|</span>
+        <span class="app-bar-brand-product">Payroll</span>
+      </a>
+
+      <label class="app-bar-week-picker" for="demo-week-ending-date">
+        <span>Week ending</span>
+        <input id="demo-week-ending-date" type="date" value="2026-03-15" data-demo-week-ending>
+      </label>
+
+      <button class="app-bar-logout" type="button" data-demo-reset>Reset demo</button>
+
+      <nav class="app-bar-navigation" aria-label="Payroll demo navigation">
+        <div class="app-bar-navigation-group">
+          <a class="is-active" href="#timesheets">Timesheets</a>
+          <a href="#paysheets">Pay Sheets</a>
+          <a href="#charges">Client Charges</a>
+          <a href="#reports">Reports</a>
+          <a href="#workforce-note">Check List</a>
+        </div>
+        <span class="app-bar-navigation-divider" aria-hidden="true"></span>
+        <div class="app-bar-navigation-group">
+          <a href="#workforce-note">New Workers (PAY IDs)</a>
+          <a href="#workforce-note">Classifications &amp; Rates</a>
+          <a class="tutorials-link" href="case-example.html#case-flow">Project example</a>
+        </div>
+      </nav>
+    </header>
+
+    <p class="demo-data-banner" role="status"><strong>Demo environment</strong><span>All workers, clients and figures are fictional. Changes stay in this browser.</span><button class="demo-new-sample-button" type="button" data-demo-randomise>New sample week</button></p>
+
+    <main>
+      <section id="timesheets" class="demo-sheet" aria-labelledby="timesheets-heading">
+        <div class="table-toolbar">
+          <div class="table-toolbar__summary">
+            <div class="table-toolbar__title"><h1 id="timesheets-heading">Time Sheets</h1></div>
+            <div class="table-toolbar__metrics section-summary" aria-label="Time Sheet summary">
+              <span class="count-display">Expected Timesheets: <b data-demo-expected-count>0</b></span>
+              <span class="count-display">Employees: <b data-demo-employee-count>0</b></span>
+              <span class="count-display table-toolbar__progress">Collected: <b data-demo-collected-count>0 / 0</b></span>
+            </div>
+          </div>
+          <div class="table-toolbar__actions">
+            <div class="table-toolbar__search search-filter"><label class="demo-visually-hidden" for="demo-timesheet-search">Search time sheets</label><input id="demo-timesheet-search" class="search-input" type="search" placeholder="Search client/site/worker..." data-demo-timesheet-search></div>
+            <div class="table-toolbar__filters"><label class="filter-label"><input type="checkbox" data-demo-incomplete-filter> Show incomplete only</label></div>
+            <div class="table-toolbar__columns"><button class="site-column-toggle-btn" type="button" data-demo-toggle-site>Show Site</button></div>
+            <div class="table-toolbar__exports controls">
+              <button type="button" data-demo-toast="Splitting is disabled in this safe demo.">Split Time Sheet</button>
+              <button type="button" data-demo-toast="Exports are disabled in this safe demo.">Export Time Sheets</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="timesheet-table-wrap" tabindex="0" aria-label="Editable fictional time sheets">
+          <table id="timesheet-table">
+            <thead data-demo-timesheet-head></thead>
+            <tbody id="timesheet-body" data-demo-timesheet-body></tbody>
+          </table>
+        </div>
+        <p class="demo-table-note">Hours recalculate with the same standard daily overtime pattern used by Black Arc: weekday, Saturday and Sunday hours are treated separately.</p>
+      </section>
+
+      <section id="paysheets" class="demo-sheet" aria-labelledby="paysheets-heading">
+        <div class="table-toolbar">
+          <div class="table-toolbar__summary">
+            <div class="table-toolbar__title"><h2 id="paysheets-heading">Pay Sheets</h2></div>
+            <div class="table-toolbar__metrics section-summary" aria-label="Pay Sheet summary">
+              <span class="count-display">Entries: <b data-demo-paysheet-entry-count>0</b></span>
+              <span class="count-display">Employees: <b data-demo-paysheet-employee-count>0</b></span>
+              <span class="count-display">Wages: <b data-demo-paysheet-wages>$0.00</b></span>
+            </div>
+          </div>
+          <div class="table-toolbar__actions">
+            <div class="table-toolbar__search search-filter"><label class="demo-visually-hidden" for="demo-paysheet-search">Search pay sheets</label><input id="demo-paysheet-search" class="search-input" type="search" placeholder="Search worker/classification/client..." data-demo-paysheet-search></div>
+            <div class="table-toolbar__exports controls">
+              <button type="button" data-demo-toast="Printing is disabled in this safe demo.">Print</button>
+              <button class="export-payroll-file-btn" type="button" data-demo-toast="Payroll file exports are disabled in this safe demo.">Export Payroll File</button>
+              <button type="button" data-demo-toast="Exports are disabled in this safe demo.">Export Paysheets</button>
+            </div>
+          </div>
+        </div>
+        <div class="demo-secondary-controls"><button class="paysheet-table-toggle-btn" type="button" data-demo-toggle-paysheet-full>See full table</button></div>
+        <div class="paysheet-table-wrap" tabindex="0" aria-label="Fictional payroll output"><table id="paysheet-table"><thead data-demo-paysheet-head></thead><tbody id="paysheet-body" data-demo-paysheet-body></tbody></table></div>
+      </section>
+
+      <section id="charges" class="demo-sheet" aria-labelledby="charges-heading">
+        <div class="table-toolbar">
+          <div class="table-toolbar__summary">
+            <div class="table-toolbar__title"><h2 id="charges-heading">Client Charges</h2></div>
+            <div class="table-toolbar__metrics section-summary" aria-label="Client charge summary">
+              <span class="count-display">Entries: <b data-demo-charge-entry-count>0</b></span>
+              <span class="count-display">Sales: <b data-demo-charge-sales>$0.00</b></span>
+              <span class="count-display">Sales + GST: <b data-demo-charge-sales-gst>$0.00</b></span>
+            </div>
+          </div>
+          <div class="table-toolbar__actions">
+            <div class="table-toolbar__search search-filter"><label class="demo-visually-hidden" for="demo-charge-search">Search client charges</label><input id="demo-charge-search" class="search-input" type="search" placeholder="Search client/site/worker/classification..." data-demo-charge-search></div>
+            <div class="table-toolbar__exports controls">
+              <button type="button" data-demo-toast="Printing is disabled in this safe demo.">Print</button>
+              <button type="button" data-demo-toast="Exports are disabled in this safe demo.">Export Charges</button>
+            </div>
+          </div>
+        </div>
+        <div class="demo-secondary-controls"><button class="charges-table-toggle-btn" type="button" data-demo-toggle-charges-full>See full table</button></div>
+        <div class="charges-table-wrap" tabindex="0" aria-label="Fictional client charge output"><table id="charges-table"><thead data-demo-charges-head></thead><tbody id="charges-body" data-demo-charges-body></tbody></table></div>
+      </section>
+
+      <section id="reports" class="demo-sheet demo-reports" aria-labelledby="reports-heading">
+        <div class="reports-heading-row">
+          <h2 id="reports-heading">Reports</h2>
+          <span class="report-week-pill" data-demo-report-week-ending>Week ending 15 Mar 2026</span>
+        </div>
+
+        <div class="report-columns">
+          <section class="report-column" aria-labelledby="report-wages-heading">
+            <h3 id="report-wages-heading">Wages</h3>
+            <p><strong>Total Hours Worked:</strong><span class="report-value" data-demo-report-total-hours>0.00</span></p>
+            <p><strong>Men Out:</strong><span class="report-value" data-demo-report-men-out>0.0</span></p>
+            <p><strong>Total Wages:</strong><span class="report-value" data-demo-report-total-wages>$0.00</span></p>
+            <ul>
+              <li><strong>Normal Construction Wages:</strong><span class="report-value" data-demo-report-normal-construction>$0.00</span></li>
+              <li><strong>Normal Non Construction Wages:</strong><span class="report-value" data-demo-report-normal-non-construction>$0.00</span></li>
+              <li><strong>Overtime Wages:</strong><span class="report-value" data-demo-report-overtime-wages>$0.00</span></li>
+              <li><strong>NT Construction %:</strong><span class="report-value" data-demo-report-construction-percent>0.0%</span></li>
+              <li><strong>NT Non Construction %:</strong><span class="report-value" data-demo-report-non-construction-percent>0.0%</span></li>
+            </ul>
+          </section>
+
+          <section class="report-column" aria-labelledby="report-on-costs-heading">
+            <h3 id="report-on-costs-heading">On Costs</h3>
+            <ul>
+              <li>
+                <label for="demo-construction-on-cost"><strong>Construction On Cost (%):</strong></label>
+                <span class="on-cost-control"><input id="demo-construction-on-cost" class="oncost-input" type="number" min="0" step="0.0001" value="1.2115" data-demo-report-control="constructionOnCostPercent" aria-label="Construction on cost percentage" disabled><button class="on-cost-lock-btn" type="button" data-demo-on-cost-lock="construction" aria-label="Unlock construction on cost" title="Unlock construction on cost">🔒</button></span>
+              </li>
+              <li>
+                <label for="demo-non-construction-on-cost"><strong>Non Construction On Cost (%):</strong></label>
+                <span class="on-cost-control"><input id="demo-non-construction-on-cost" class="oncost-input" type="number" min="0" step="0.0001" value="1.2036" data-demo-report-control="nonConstructionOnCostPercent" aria-label="Non-construction on cost percentage" disabled><button class="on-cost-lock-btn" type="button" data-demo-on-cost-lock="nonConstruction" aria-label="Unlock non-construction on cost" title="Unlock non-construction on cost">🔒</button></span>
+              </li>
+              <li>
+                <label for="demo-overtime-on-cost"><strong>Overtime On Cost (%):</strong></label>
+                <span class="on-cost-control"><input id="demo-overtime-on-cost" class="oncost-input" type="number" min="0" step="0.0001" value="1.0823" data-demo-report-control="overtimeOnCostPercent" aria-label="Overtime on cost percentage" disabled><button class="on-cost-lock-btn" type="button" data-demo-on-cost-lock="overtime" aria-label="Unlock overtime on cost" title="Unlock overtime on cost">🔒</button></span>
+              </li>
+            </ul>
+          </section>
+
+          <section class="report-column" aria-labelledby="report-woc-heading">
+            <h3 id="report-woc-heading">W&amp;OC</h3>
+            <ul>
+              <li><strong>Construction W&amp;OC:</strong><span class="report-value" data-demo-report-construction-woc>$0.00</span></li>
+              <li><strong>Non Construction W&amp;OC:</strong><span class="report-value" data-demo-report-non-construction-woc>$0.00</span></li>
+              <li><strong>Overtime W&amp;OC:</strong><span class="report-value" data-demo-report-overtime-woc>$0.00</span></li>
+              <li class="report-total-row"><strong>Total W&amp;OC:</strong><span class="report-value" data-demo-report-total-woc>$0.00</span></li>
+            </ul>
+          </section>
+
+          <section class="report-column sales-profit" aria-labelledby="report-sales-profit-heading">
+            <h3 id="report-sales-profit-heading">Sales &amp; Profit</h3>
+            <ul>
+              <li><strong>Total Charge:</strong><span class="report-value" data-demo-report-total-charge>$0.00</span></li>
+              <li><strong>GST:</strong><span class="report-value" data-demo-report-gst>$0.00</span></li>
+              <li><strong>Gross Sales:</strong><span class="report-value" data-demo-report-gross-sales>$0.00</span></li>
+              <li><label for="demo-adjustment-figure"><strong>Adjustment Figure:</strong></label><input id="demo-adjustment-figure" class="adjustment-figure" type="number" step="0.01" value="0" data-demo-report-control="adjustmentValue" aria-label="Adjustment figure"></li>
+              <li class="report-total-row"><strong>Gross Profit:</strong><span class="report-value" data-demo-report-gross-profit>$0.00</span></li>
+              <li><strong>Gross Profit/Man (38hr/week):</strong><span class="report-value" data-demo-report-profit-per-man>$0.00</span></li>
+            </ul>
+          </section>
+        </div>
+      </section>
+
+      <aside id="workforce-note" class="demo-workforce-note"><strong>Demo scope</strong><span>This working preview focuses on Black Arc’s Timesheets, Pay Sheets and Client Charges screens. The remaining navigation is shown to reflect the real workspace.</span></aside>
+    </main>
+  </div>
+
+  <div class="demo-toast" role="status" aria-live="polite" data-demo-toast-region hidden></div>
+  <script src="assets/timesheet-payroll-demo.js?v=20260903c"></script>
+</body>
+</html>

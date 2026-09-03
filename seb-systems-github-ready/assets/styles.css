@@ -741,6 +741,37 @@ p { color: var(--ink-soft); }
 .workflow-media-copy { min-width: 0; }
 .workflow-media-copy strong { display: block; color: var(--ink); font-size: 0.7rem; line-height: 1.2; }
 .workflow-media-copy small { display: block; margin-top: 3px; color: var(--blue); font-size: 0.64rem; line-height: 1.3; }
+.workflow-demo-trigger {
+  grid-column: 1 / -1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 2px;
+  padding: 8px;
+  color: inherit;
+  text-decoration: none;
+  background: #f8fbff;
+  border: 1px solid #cbd7e8;
+  border-radius: 10px;
+}
+.workflow-demo-trigger:hover { border-color: var(--blue); box-shadow: 0 5px 14px rgba(37,99,235,.12); }
+.workflow-demo-trigger__icon {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 1rem;
+  font-weight: 800;
+  background: var(--blue);
+  border-radius: 8px;
+}
+.workflow-demo-trigger strong,
+.workflow-demo-trigger small { display: block; line-height: 1.2; }
+.workflow-demo-trigger strong { color: var(--ink); font-size: 0.7rem; }
+.workflow-demo-trigger small { margin-top: 3px; color: var(--blue); font-size: 0.64rem; }
 .workflow-video-thumb { position: relative; width: 74px; aspect-ratio: 16 / 9; display: block; overflow: hidden; border-radius: 6px; }
 .workflow-video-thumb > span { position: absolute; inset: 50% auto auto 50%; width: 24px; height: 24px; display: grid; place-items: center; color: white; font-size: 0.6rem; background: var(--blue); border-radius: 50%; transform: translate(-50%, -50%); }
 .workflow-video-thumb--loom { background: linear-gradient(135deg, #123d7b, #2e75dd); }
