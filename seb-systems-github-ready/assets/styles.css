@@ -470,8 +470,8 @@ p { color: var(--ink-soft); }
 .case-hero__features li { position: relative; min-height: 38px; display: flex; align-items: center; padding: 7px 12px 7px 31px; color: var(--ink-soft); font-size: 0.85rem; font-weight: 750; line-height: 1.25; background: var(--blue-pale); border: 1px solid #d6e6ff; border-radius: 9px; }
 .case-hero__features li::before { content: ""; position: absolute; left: 12px; width: 10px; height: 10px; border: 2px solid var(--blue); border-radius: 50%; box-shadow: inset 0 0 0 2px var(--blue-pale); background: var(--blue); }
 .case-hero__photo { margin: 0; overflow: hidden; border: 1px solid #bfdbfe; border-radius: 14px; box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08); }
-.case-hero__photo img { width: 100%; aspect-ratio: 1; display: block; object-fit: cover; }
-.case-hero__photo--systems img { aspect-ratio: 3 / 2; object-position: center; }
+.case-hero__photo img { width: 100%; height: auto; display: block; object-fit: cover; }
+.case-hero__photo--systems img { aspect-ratio: auto; object-position: center; }
 .case-hero + .video-section { padding-top: 20px; }
 
 .video-section { padding-top: 36px; }
@@ -773,7 +773,8 @@ p { color: var(--ink-soft); }
 .workflow-media-trigger:hover { border-color: var(--blue); box-shadow: 0 5px 14px rgba(37,99,235,.12); }
 .workflow-media-trigger img {
   width: 74px;
-  aspect-ratio: 16 / 9;
+  height: auto;
+  aspect-ratio: auto;
   display: block;
   object-fit: cover;
   border: 1px solid #9dbceb;
