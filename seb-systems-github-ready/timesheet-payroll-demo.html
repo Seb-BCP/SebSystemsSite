@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/favicon-upgraded-boat.png" type="image/png">
-  <link rel="stylesheet" href="assets/timesheet-payroll-demo.css?v=20260903c">
+  <link rel="stylesheet" href="assets/timesheet-payroll-demo.css?v=20260903d">
   <title>Black Arc Payroll — Interactive Demo</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
       <a class="app-bar-brand" href="case-example.html#case-flow" aria-label="Back to the project example">
         <span class="app-bar-brand-primary">Black Arc</span>
         <span class="app-bar-brand-separator" aria-hidden="true">|</span>
-        <span class="app-bar-brand-product">Payroll</span>
+        <span class="app-bar-brand-product">Labour Hire Payroll Preparation</span>
       </a>
 
       <label class="app-bar-week-picker" for="demo-week-ending-date">
@@ -36,13 +36,13 @@
           <a href="#paysheets">Pay Sheets</a>
           <a href="#charges">Client Charges</a>
           <a href="#reports">Reports</a>
-          <a href="#workforce-note">Check List</a>
+          <button class="app-bar-demo-disabled" type="button" data-demo-toast="Check List is disabled for this demo.">Check List</button>
         </div>
         <span class="app-bar-navigation-divider" aria-hidden="true"></span>
         <div class="app-bar-navigation-group">
-          <a href="#workforce-note">New Workers (PAY IDs)</a>
-          <a href="#workforce-note">Classifications &amp; Rates</a>
-          <a class="tutorials-link" href="case-example.html#case-flow">Project example</a>
+          <button class="app-bar-demo-disabled" type="button" data-demo-toast="New Workers (PAY IDs) is disabled for this demo.">New Workers (PAY IDs)</button>
+          <button class="app-bar-demo-disabled" type="button" data-demo-toast="Classifications &amp; Rates is disabled for this demo.">Classifications &amp; Rates</button>
+          <a class="return-website-link" href="case-example.html#case-flow">Return to website</a>
         </div>
       </nav>
     </header>
@@ -151,15 +151,15 @@
             <ul>
               <li>
                 <label for="demo-construction-on-cost"><strong>Construction On Cost (%):</strong></label>
-                <span class="on-cost-control"><input id="demo-construction-on-cost" class="oncost-input" type="number" min="0" step="0.0001" value="1.2115" data-demo-report-control="constructionOnCostPercent" aria-label="Construction on cost percentage" disabled><button class="on-cost-lock-btn" type="button" data-demo-on-cost-lock="construction" aria-label="Unlock construction on cost" title="Unlock construction on cost">🔒</button></span>
+                <span class="on-cost-control"><span class="on-cost-input-wrap"><input id="demo-construction-on-cost" class="oncost-input" type="number" min="0" step="0.01" value="21.15" data-demo-report-control="constructionOnCostPercent" aria-label="Construction on cost percentage" disabled><span aria-hidden="true">%</span></span><button class="on-cost-lock-btn" type="button" data-demo-on-cost-lock="construction" aria-label="Unlock construction on cost" title="Unlock construction on cost">🔒</button></span>
               </li>
               <li>
                 <label for="demo-non-construction-on-cost"><strong>Non Construction On Cost (%):</strong></label>
-                <span class="on-cost-control"><input id="demo-non-construction-on-cost" class="oncost-input" type="number" min="0" step="0.0001" value="1.2036" data-demo-report-control="nonConstructionOnCostPercent" aria-label="Non-construction on cost percentage" disabled><button class="on-cost-lock-btn" type="button" data-demo-on-cost-lock="nonConstruction" aria-label="Unlock non-construction on cost" title="Unlock non-construction on cost">🔒</button></span>
+                <span class="on-cost-control"><span class="on-cost-input-wrap"><input id="demo-non-construction-on-cost" class="oncost-input" type="number" min="0" step="0.01" value="20.36" data-demo-report-control="nonConstructionOnCostPercent" aria-label="Non-construction on cost percentage" disabled><span aria-hidden="true">%</span></span><button class="on-cost-lock-btn" type="button" data-demo-on-cost-lock="nonConstruction" aria-label="Unlock non-construction on cost" title="Unlock non-construction on cost">🔒</button></span>
               </li>
               <li>
                 <label for="demo-overtime-on-cost"><strong>Overtime On Cost (%):</strong></label>
-                <span class="on-cost-control"><input id="demo-overtime-on-cost" class="oncost-input" type="number" min="0" step="0.0001" value="1.0823" data-demo-report-control="overtimeOnCostPercent" aria-label="Overtime on cost percentage" disabled><button class="on-cost-lock-btn" type="button" data-demo-on-cost-lock="overtime" aria-label="Unlock overtime on cost" title="Unlock overtime on cost">🔒</button></span>
+                <span class="on-cost-control"><span class="on-cost-input-wrap"><input id="demo-overtime-on-cost" class="oncost-input" type="number" min="0" step="0.01" value="8.23" data-demo-report-control="overtimeOnCostPercent" aria-label="Overtime on cost percentage" disabled><span aria-hidden="true">%</span></span><button class="on-cost-lock-btn" type="button" data-demo-on-cost-lock="overtime" aria-label="Unlock overtime on cost" title="Unlock overtime on cost">🔒</button></span>
               </li>
             </ul>
           </section>
@@ -193,6 +193,6 @@
   </div>
 
   <div class="demo-toast" role="status" aria-live="polite" data-demo-toast-region hidden></div>
-  <script src="assets/timesheet-payroll-demo.js?v=20260903c"></script>
+  <script src="assets/timesheet-payroll-demo.js?v=20260903d"></script>
 </body>
 </html>

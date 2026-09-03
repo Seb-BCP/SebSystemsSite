@@ -28,9 +28,9 @@
 
   function createReportSettings() {
     return {
-      constructionOnCostPercent: 1.2115,
-      nonConstructionOnCostPercent: 1.2036,
-      overtimeOnCostPercent: 1.0823,
+      constructionOnCostPercent: 21.15,
+      nonConstructionOnCostPercent: 20.36,
+      overtimeOnCostPercent: 8.23,
       adjustmentValue: 0,
       onCostLocks: { construction: true, nonConstruction: true, overtime: true }
     };
@@ -320,9 +320,9 @@
     var menOut = totalHours > 0 ? totalHours / 38 : 0;
     var gst = totalCharge * 0.1;
     var grossSales = totalCharge + gst;
-    var constructionWoc = normalConstructionWages * settings.constructionOnCostPercent;
-    var nonConstructionWoc = normalNonConstructionWages * settings.nonConstructionOnCostPercent;
-    var overtimeWoc = overtimeWages * settings.overtimeOnCostPercent;
+    var constructionWoc = normalConstructionWages * (1 + settings.constructionOnCostPercent / 100);
+    var nonConstructionWoc = normalNonConstructionWages * (1 + settings.nonConstructionOnCostPercent / 100);
+    var overtimeWoc = overtimeWages * (1 + settings.overtimeOnCostPercent / 100);
     var totalWoc = constructionWoc + nonConstructionWoc + overtimeWoc;
     var grossProfit = totalCharge - totalWoc + settings.adjustmentValue;
 
@@ -381,7 +381,9 @@
       button.classList.toggle('is-unlocked', !locked);
       button.setAttribute('aria-label', (locked ? 'Unlock ' : 'Lock ') + label + ' on cost');
       button.setAttribute('title', (locked ? 'Unlock ' : 'Lock ') + label + ' on cost');
-      button.previousElementSibling.disabled = locked;
+      var field = type === 'construction' ? 'constructionOnCostPercent' : type === 'nonConstruction' ? 'nonConstructionOnCostPercent' : 'overtimeOnCostPercent';
+      var input = document.querySelector('[data-demo-report-control="' + field + '"]');
+      if (input) input.disabled = locked;
     });
   }
 
