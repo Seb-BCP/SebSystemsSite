@@ -7,13 +7,9 @@
   const toggle = document.querySelector('[data-menu-toggle]');
   const navLinks = nav ? Array.from(nav.querySelectorAll('a')) : [];
   const pageCache = new Map();
-  const pageNodes = new Map();
-  const pageNodeCacheOrder = [];
-  const pageNodeCacheLimit = 2;
-  const warmedImageSources = new Set();
+  const decodedImageCache = new Map();
   const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let slider = null;
-  let pageCacheMount = null;
   let navIndicator = null;
   let activeRoute = null;
   let isNavigating = false;
@@ -29,38 +25,6 @@
     return destination.origin === window.location.origin && navLinks.some(function (link) {
       return routeKey(link.href) === routeKey(destination.href);
     });
-  };
-
-  const getPageCacheMount = function () {
-    if (pageCacheMount) return pageCacheMount;
-    pageCacheMount = document.createElement('div');
-    pageCacheMount.className = 'page-slider__cache';
-    pageCacheMount.setAttribute('aria-hidden', 'true');
-    if ('inert' in pageCacheMount) pageCacheMount.inert = true;
-    document.body.appendChild(pageCacheMount);
-    return pageCacheMount;
-  };
-
-  const storePage = function (page) {
-    if (!page) return;
-    const key = page.dataset.pageRoute;
-    page.removeAttribute('id');
-    page.setAttribute('aria-hidden', 'true');
-    if ('inert' in page) page.inert = true;
-    getPageCacheMount().appendChild(page);
-
-    if (!key) return;
-    pageNodes.set(key, page);
-    const existingIndex = pageNodeCacheOrder.indexOf(key);
-    if (existingIndex !== -1) pageNodeCacheOrder.splice(existingIndex, 1);
-    pageNodeCacheOrder.push(key);
-
-    while (pageNodeCacheOrder.length > pageNodeCacheLimit) {
-      const oldestKey = pageNodeCacheOrder.shift();
-      const oldestPage = pageNodes.get(oldestKey);
-      if (oldestPage && oldestPage !== page) oldestPage.remove();
-      pageNodes.delete(oldestKey);
-    }
   };
 
   const getSlider = function () {
@@ -140,33 +104,68 @@
     return template.content.firstElementChild;
   };
 
-  const getPageNode = function (record) {
-    const key = routeKey(record.url);
-    let page = pageNodes.get(key);
-    const existingIndex = pageNodeCacheOrder.indexOf(key);
-    if (existingIndex !== -1) pageNodeCacheOrder.splice(existingIndex, 1);
-    if (!page) {
-      page = createMain(record);
-      page.dataset.pageRoute = key;
-      page.dataset.pageInitialised = 'true';
-      initialisePageContent(page);
-      pageNodes.set(key, page);
+  const priorityImageSources = function (record) {
+    const template = document.createElement('template');
+    template.innerHTML = record.mainMarkup.trim();
+    return Array.from(template.content.querySelectorAll('img[data-nav-priority][src]')).map(function (image) {
+      return new URL(image.getAttribute('src'), record.url).href;
+    });
+  };
+
+  const preloadAndDecodeImage = function (source) {
+    const cached = decodedImageCache.get(source);
+    if (cached) return cached.promise;
+
+    const image = new Image();
+    image.decoding = 'async';
+    if ('fetchPriority' in image) image.fetchPriority = 'high';
+
+    let resolveImage;
+    let settled = false;
+    const finish = function () {
+      if (settled) return;
+      settled = true;
+      resolveImage();
+    };
+    const decode = function () {
+      if (typeof image.decode !== 'function') {
+        finish();
+        return;
+      }
+      image.decode().then(finish, finish);
+    };
+    const promise = new Promise(function (resolve) { resolveImage = resolve; });
+    decodedImageCache.set(source, { image: image, promise: promise });
+
+    image.addEventListener('load', decode, { once: true });
+    image.addEventListener('error', finish, { once: true });
+    image.src = source;
+    if (image.complete) {
+      if (image.naturalWidth) decode();
+      else finish();
     }
-    page.removeAttribute('aria-hidden');
-    if ('inert' in page) page.inert = false;
-    return page;
+
+    return promise;
+  };
+
+  const decodeImageElement = function (image) {
+    if (!image) return Promise.resolve();
+    if (typeof image.decode === 'function') return image.decode().catch(function () {});
+    return Promise.resolve();
   };
 
   const warmPageImages = function (record) {
-    const template = document.createElement('template');
-    template.innerHTML = record.mainMarkup.trim();
-    Array.from(template.content.querySelectorAll('img[src]')).slice(0, 2).forEach(function (image) {
-      const source = new URL(image.getAttribute('src'), record.url).href;
-      if (warmedImageSources.has(source)) return;
-      warmedImageSources.add(source);
-      const preload = new Image();
-      preload.src = source;
-    });
+    return Promise.all(priorityImageSources(record).map(preloadAndDecodeImage));
+  };
+
+  const preparePage = async function (record) {
+    const incoming = createMain(record);
+    incoming.dataset.pageRoute = routeKey(record.url);
+
+    await warmPageImages(record);
+    await Promise.all(Array.from(incoming.querySelectorAll('img[data-nav-priority]')).map(decodeImageElement));
+    initialisePageContent(incoming);
+    return incoming;
   };
 
   const updateDocumentDetails = function (record) {
@@ -215,7 +214,6 @@
 
     scope.querySelectorAll('[data-photo]').forEach(function (img) {
       img.addEventListener('error', function () { img.style.display = 'none'; });
-      if (img.complete && img.naturalWidth === 0) img.style.display = 'none';
     });
 
     const loomHost = scope.querySelector('[data-loom-host]');
@@ -278,35 +276,40 @@
     scope.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
   };
 
-  const replacePage = function (record) {
+  const replacePage = function (record, incoming) {
     const stage = getSlider();
     if (!stage) return null;
 
     const outgoing = stage.querySelector('main');
-    const incoming = getPageNode(record);
     incoming.id = 'main';
-    if (outgoing && outgoing !== incoming) storePage(outgoing);
     stage.replaceChildren(incoming);
+    if (outgoing && outgoing !== incoming) outgoing.remove();
     updateDocumentDetails(record);
     updateNavigationState(record.url);
     return incoming;
   };
 
-  const transitionFallback = function (record, direction) {
+  const transitionFallback = function (record, direction, incoming) {
     const stage = getSlider();
     const outgoing = stage && stage.querySelector('main');
-    if (!stage || !outgoing) return Promise.resolve();
+    if (!stage || !outgoing) {
+      replacePage(record, incoming);
+      activeRoute = routeKey(record.url);
+      window.scrollTo(0, 0);
+      return Promise.resolve();
+    }
 
-    const incoming = getPageNode(record);
+    window.scrollTo(0, 0);
     incoming.id = 'main-incoming';
     incoming.setAttribute('aria-hidden', 'true');
+    if ('inert' in incoming) incoming.inert = true;
     stage.appendChild(incoming);
 
-    const stageHeight = Math.max(outgoing.offsetHeight, incoming.offsetHeight);
-    stage.style.height = stageHeight + 'px';
     outgoing.classList.add('page-slider__pane', 'page-slider__pane--outgoing');
     incoming.classList.add('page-slider__pane', 'page-slider__pane--incoming');
     stage.classList.add('page-slider--transitioning', direction === 'backward' ? 'page-slider--backward' : 'page-slider--forward');
+    const stageHeight = Math.max(outgoing.offsetHeight, incoming.offsetHeight);
+    stage.style.height = Math.ceil(stageHeight) + 'px';
     outgoing.setAttribute('aria-hidden', 'true');
     if ('inert' in outgoing) outgoing.inert = true;
 
@@ -314,20 +317,32 @@
     updateNavigationState(record.url);
 
     return new Promise(function (resolve) {
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () { stage.classList.add('page-slider--moving'); });
-      });
-      window.setTimeout(function () {
+      let finished = false;
+      let safetyTimer = null;
+      const finish = function () {
+        if (finished) return;
+        finished = true;
+        if (safetyTimer) window.clearTimeout(safetyTimer);
+        incoming.removeEventListener('transitionend', onTransitionEnd);
         incoming.id = 'main';
         incoming.removeAttribute('aria-hidden');
-        storePage(outgoing);
+        if ('inert' in incoming) incoming.inert = false;
+        outgoing.remove();
         incoming.classList.remove('page-slider__pane', 'page-slider__pane--incoming');
         stage.classList.remove('page-slider--transitioning', 'page-slider--moving', 'page-slider--backward', 'page-slider--forward');
         stage.style.height = '';
         activeRoute = routeKey(record.url);
-        window.scrollTo(0, 0);
         resolve();
-      }, 460);
+      };
+      const onTransitionEnd = function (event) {
+        if (event.target === incoming && event.propertyName === 'transform') finish();
+      };
+
+      incoming.addEventListener('transitionend', onTransitionEnd);
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { stage.classList.add('page-slider--moving'); });
+      });
+      safetyTimer = window.setTimeout(finish, 700);
     });
   };
 
@@ -341,6 +356,7 @@
 
     try {
       const record = await loadPage(destination.href);
+      const incoming = await preparePage(record);
       const currentIndex = navLinks.findIndex(function (link) { return routeKey(link.href) === activeRoute; });
       const nextIndex = navLinks.findIndex(function (link) { return routeKey(link.href) === routeKey(destination.href); });
       const direction = nextIndex < currentIndex ? 'backward' : 'forward';
@@ -348,11 +364,11 @@
       if (historyMode === 'push') history.pushState({ pageSlider: true }, '', destination.href);
 
       if (reducedMotion) {
-        replacePage(record);
+        replacePage(record, incoming);
         activeRoute = routeKey(record.url);
         window.scrollTo(0, 0);
       } else {
-        await transitionFallback(record, direction);
+        await transitionFallback(record, direction, incoming);
       }
     } catch (error) {
       window.location.assign(destination.href);
@@ -423,15 +439,14 @@
       const warmDestination = function () {
         loadPage(link.href).then(warmPageImages).catch(function () {});
       };
-      link.addEventListener('mouseenter', warmDestination, { once: true });
-      link.addEventListener('focus', warmDestination, { once: true });
-      link.addEventListener('touchstart', warmDestination, { once: true, passive: true });
+      link.addEventListener('mouseenter', warmDestination);
+      link.addEventListener('focus', warmDestination);
+      link.addEventListener('touchstart', warmDestination, { passive: true });
     });
   }
 
   const initialMain = document.querySelector('main#main') || document.querySelector('main');
   if (initialMain) {
-    pageNodes.set(activeRoute, initialMain);
     initialMain.dataset.pageRoute = activeRoute;
     initialMain.dataset.pageInitialised = 'true';
     initialisePageContent(initialMain);

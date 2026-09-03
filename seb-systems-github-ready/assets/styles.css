@@ -121,16 +121,6 @@ button { cursor: pointer; }
 }
 
 .page-slider { position: relative; min-width: 0; overflow: hidden; }
-.page-slider__cache {
-  position: absolute;
-  top: 0;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  visibility: hidden;
-  pointer-events: none;
-}
 .page-slider--transitioning { isolation: isolate; }
 .page-slider--transitioning .page-slider__pane {
   position: absolute;
@@ -138,6 +128,8 @@ button { cursor: pointer; }
   left: 0;
   width: 100%;
   min-width: 100%;
+  pointer-events: none;
+  backface-visibility: hidden;
   will-change: transform;
   transition: transform 410ms cubic-bezier(.22, .61, .36, 1);
 }
