@@ -7,9 +7,13 @@
   const toggle = document.querySelector('[data-menu-toggle]');
   const navLinks = nav ? Array.from(nav.querySelectorAll('a')) : [];
   const pageCache = new Map();
+  const pageNodes = new Map();
+  const pageNodeCacheOrder = [];
+  const pageNodeCacheLimit = 2;
   const warmedImageSources = new Set();
   const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let slider = null;
+  let pageCacheMount = null;
   let navIndicator = null;
   let activeRoute = null;
   let isNavigating = false;
@@ -25,6 +29,38 @@
     return destination.origin === window.location.origin && navLinks.some(function (link) {
       return routeKey(link.href) === routeKey(destination.href);
     });
+  };
+
+  const getPageCacheMount = function () {
+    if (pageCacheMount) return pageCacheMount;
+    pageCacheMount = document.createElement('div');
+    pageCacheMount.className = 'page-slider__cache';
+    pageCacheMount.setAttribute('aria-hidden', 'true');
+    if ('inert' in pageCacheMount) pageCacheMount.inert = true;
+    document.body.appendChild(pageCacheMount);
+    return pageCacheMount;
+  };
+
+  const storePage = function (page) {
+    if (!page) return;
+    const key = page.dataset.pageRoute;
+    page.removeAttribute('id');
+    page.setAttribute('aria-hidden', 'true');
+    if ('inert' in page) page.inert = true;
+    getPageCacheMount().appendChild(page);
+
+    if (!key) return;
+    pageNodes.set(key, page);
+    const existingIndex = pageNodeCacheOrder.indexOf(key);
+    if (existingIndex !== -1) pageNodeCacheOrder.splice(existingIndex, 1);
+    pageNodeCacheOrder.push(key);
+
+    while (pageNodeCacheOrder.length > pageNodeCacheLimit) {
+      const oldestKey = pageNodeCacheOrder.shift();
+      const oldestPage = pageNodes.get(oldestKey);
+      if (oldestPage && oldestPage !== page) oldestPage.remove();
+      pageNodes.delete(oldestKey);
+    }
   };
 
   const getSlider = function () {
@@ -102,6 +138,23 @@
     const template = document.createElement('template');
     template.innerHTML = record.mainMarkup.trim();
     return template.content.firstElementChild;
+  };
+
+  const getPageNode = function (record) {
+    const key = routeKey(record.url);
+    let page = pageNodes.get(key);
+    const existingIndex = pageNodeCacheOrder.indexOf(key);
+    if (existingIndex !== -1) pageNodeCacheOrder.splice(existingIndex, 1);
+    if (!page) {
+      page = createMain(record);
+      page.dataset.pageRoute = key;
+      page.dataset.pageInitialised = 'true';
+      initialisePageContent(page);
+      pageNodes.set(key, page);
+    }
+    page.removeAttribute('aria-hidden');
+    if ('inert' in page) page.inert = false;
+    return page;
   };
 
   const warmPageImages = function (record) {
@@ -229,12 +282,13 @@
     const stage = getSlider();
     if (!stage) return null;
 
-    const incoming = createMain(record);
+    const outgoing = stage.querySelector('main');
+    const incoming = getPageNode(record);
     incoming.id = 'main';
+    if (outgoing && outgoing !== incoming) storePage(outgoing);
     stage.replaceChildren(incoming);
     updateDocumentDetails(record);
     updateNavigationState(record.url);
-    initialisePageContent(incoming);
     return incoming;
   };
 
@@ -243,10 +297,9 @@
     const outgoing = stage && stage.querySelector('main');
     if (!stage || !outgoing) return Promise.resolve();
 
-    const incoming = createMain(record);
+    const incoming = getPageNode(record);
     incoming.id = 'main-incoming';
     incoming.setAttribute('aria-hidden', 'true');
-    initialisePageContent(incoming);
     stage.appendChild(incoming);
 
     const stageHeight = Math.max(outgoing.offsetHeight, incoming.offsetHeight);
@@ -267,7 +320,7 @@
       window.setTimeout(function () {
         incoming.id = 'main';
         incoming.removeAttribute('aria-hidden');
-        outgoing.remove();
+        storePage(outgoing);
         incoming.classList.remove('page-slider__pane', 'page-slider__pane--incoming');
         stage.classList.remove('page-slider--transitioning', 'page-slider--moving', 'page-slider--backward', 'page-slider--forward');
         stage.style.height = '';
@@ -333,6 +386,7 @@
     if (isNavigationPage(window.location.href)) navigateTo(window.location.href, 'none');
   });
 
+  activeRoute = routeKey(window.location.href);
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   const mayPrefetch = !connection || (!connection.saveData && !/2g/.test(connection.effectiveType || ''));
   if (mayPrefetch && navLinks.length) {
@@ -375,7 +429,11 @@
     });
   }
 
-  activeRoute = routeKey(window.location.href);
   const initialMain = document.querySelector('main#main') || document.querySelector('main');
-  if (initialMain) initialisePageContent(initialMain);
+  if (initialMain) {
+    pageNodes.set(activeRoute, initialMain);
+    initialMain.dataset.pageRoute = activeRoute;
+    initialMain.dataset.pageInitialised = 'true';
+    initialisePageContent(initialMain);
+  }
 })();
