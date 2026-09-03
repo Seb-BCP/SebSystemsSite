@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Project examples from Sebastian Ortiz, including Blue Collar People's connected labour hire system.">
   <meta name="theme-color" content="#111827">
+  <script>try { if (sessionStorage.getItem('site-page-slide-enter') === location.pathname) { document.documentElement.classList.add('site-page-slide-enter'); sessionStorage.removeItem('site-page-slide-enter'); } } catch (error) {}</script>
   <link rel="icon" href="assets/favicon-upgraded-boat.png" type="image/png">
-  <link rel="stylesheet" href="assets/styles.css?v=20260902e">
+  <link rel="stylesheet" href="assets/styles.css?v=20260903b">
   <title>Project Examples | Sebastian Ortiz</title>
 </head>
 <body>
@@ -75,7 +76,7 @@
           <article class="case-workflow-step"><span>Step 1</span><h2>Workers submit hours without paper or an app.</h2><p>Workers use a native web link to submit their hours—no app or password required.</p></article>
         </div>
         <div class="case-workflow-row">
-          <div class="workflow-card-track"><article class="workflow-vertical-node"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 8 8 6 8-6"/></svg></span><span class="node-copy"><strong>PDF Generator &amp; Batch Emailer (Approval process)</strong><span>Code behind the Google Sheet generates PDFs and sends the right emails.</span></span><a class="workflow-media-trigger" href="#batch-sheet-dialog"><img src="assets/batch-pdf-emailer-anonymised.png" alt="Anonymised Google Sheet batch email queue"><span class="workflow-media-copy"><strong>See the Google Sheet</strong><small>Automated code powers the actions.</small></span></a></article><span class="workflow-vertical-connector" aria-hidden="true"></span></div>
+          <div class="workflow-card-track"><article class="workflow-vertical-node"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 8 8 6 8-6"/></svg></span><span class="node-copy"><strong>PDF Generator &amp; Batch Emailer (Approval process)</strong><span>Code behind the Google Sheet generates PDFs and sends the right emails.</span></span><a class="workflow-media-trigger" href="#batch-sheet-dialog"><img src="assets/batch-pdf-emailer-anonymised.png" alt="Anonymised Google Sheet batch email queue"><span class="workflow-media-copy"><strong>See code automated Google Sheet</strong></span></a></article><span class="workflow-vertical-connector" aria-hidden="true"></span></div>
           <article class="case-workflow-step"><span>Step 2</span><h2>Each client receives the right report to approve.</h2><p>Submitted hours are reviewed, then the system creates a PDF report for each worker and sends it to the correct client for approval.</p></article>
         </div>
         <div class="case-workflow-row">
@@ -83,7 +84,7 @@
           <article class="case-workflow-step"><span>Step 3</span><h2>Approved timesheet data moves automatically.</h2><p>Software tools speak to each other - data transfers simply.</p></article>
         </div>
         <div class="case-workflow-row case-workflow-row--step-four">
-          <div class="workflow-card-track workflow-card-track--step-four-hub"><article class="workflow-vertical-node workflow-vertical-node--hub"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1"/></svg></span><span class="node-copy"><strong>Timesheet to Payroll &amp; Sales Processing System</strong><span>Custom software built for BCP requirements, transforms timesheets into payroll and sales data.</span></span><a class="workflow-media-trigger workflow-demo-trigger" href="timesheet-payroll-demo.html" target="_blank" rel="noopener noreferrer"><img src="assets/black-arc-payroll-demo-preview.png" alt="Black Arc Labour Hire Payroll Preparation demo showing fictional editable time sheets"><span class="workflow-media-copy"><strong>Open interactive demo</strong><small>Try fictional timesheet data safely.</small></span></a></article><span class="workflow-vertical-connector" aria-hidden="true"></span></div>
+          <div class="workflow-card-track workflow-card-track--step-four-hub"><article class="workflow-vertical-node workflow-vertical-node--hub"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1"/></svg></span><span class="node-copy"><strong>Timesheet to Payroll &amp; Sales Processing System</strong><span>Custom software built for BCP requirements, transforms timesheets into payroll and sales data.</span></span><a class="workflow-media-trigger workflow-demo-trigger" href="timesheet-payroll-demo.html" target="_blank" rel="noopener noreferrer"><img src="assets/black-arc-payroll-demo-preview.png" alt="Black Arc Labour Hire Payroll Preparation demo showing fictional editable time sheets"><span class="workflow-media-copy"><strong>Open demo of Black Arc Payroll</strong></span></a></article><span class="workflow-vertical-connector" aria-hidden="true"></span></div>
           <article class="case-workflow-step case-workflow-step--step-four"><span>Step 4</span><h2>The Timesheet to Payroll &amp; Sales Processing System prepares both business outputs.</h2><p>The Timesheet to Payroll &amp; Sales Processing System organises the approved timesheet data into a payroll file and sales data ready to generate invoices.</p></article>
           <span class="workflow-vertical-connector workflow-vertical-connector--step-four-join" aria-hidden="true"></span>
           <div class="workflow-card-track workflow-card-track--step-four-output"><article class="workflow-vertical-node workflow-vertical-node--output"><span class="node-icon"><svg viewBox="0 0 24 24"><path d="m3 9 9-5 9 5"/><path d="M4 10h16"/><path d="M6 10v7"/><path d="M10 10v7"/><path d="M14 10v7"/><path d="M18 10v7"/><path d="M3 20h18"/></svg></span><span class="node-copy"><strong>Payroll file &amp; invoice data</strong><span>From one timesheet submission, payroll and invoicing are organised in a single step—so your team is not entering the same information twice.</span></span></article><span class="workflow-vertical-connector" aria-hidden="true"></span></div>
@@ -118,6 +119,6 @@
 </main>
 
 <script src="assets/site-config.js"></script>
-<script src="assets/site.js?v=20260902a"></script>
+<script src="assets/site.js?v=20260903b"></script>
 
 </body></html>

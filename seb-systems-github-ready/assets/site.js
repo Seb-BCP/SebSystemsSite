@@ -4,13 +4,42 @@
 
   const toggle = document.querySelector('[data-menu-toggle]');
   const nav = document.querySelector('[data-site-nav]');
+  const root = document.documentElement;
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const supportsCrossDocumentTransitions = window.CSS && CSS.supports && CSS.supports('view-transition-name: site-nav-active');
+
+  if (root.classList.contains('site-page-slide-enter')) {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        root.classList.add('site-page-slide-enter-active');
+        window.setTimeout(function () {
+          root.classList.remove('site-page-slide-enter', 'site-page-slide-enter-active');
+        }, 260);
+      });
+    });
+  }
+
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
       const open = nav.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', String(open));
     });
     nav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () { nav.classList.remove('is-open'); });
+      link.addEventListener('click', function (event) {
+        nav.classList.remove('is-open');
+
+        const destination = new URL(link.href, window.location.href);
+        const isInternalPage = destination.origin === window.location.origin &&
+          destination.pathname !== window.location.pathname &&
+          !link.target && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+
+        if (!isInternalPage || reducedMotion || supportsCrossDocumentTransitions) return;
+
+        event.preventDefault();
+        try { sessionStorage.setItem('site-page-slide-enter', destination.pathname); } catch (error) {}
+        root.classList.add('site-page-slide-leave');
+        window.setTimeout(function () { window.location.assign(destination.href); }, 220);
+      });
     });
   }
 
